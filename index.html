@@ -467,6 +467,16 @@
     max-width: 600px; margin-left: auto; margin-right: auto;
   }
   .cta-sub { font-size: 16px; font-weight: 300; color: rgba(245,240,232,.5); margin-bottom: 48px; line-height: 1.7; }
+  .cta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .cta-line-btn {
+    font-size: 14px; font-weight: 400;
+    color: rgba(245,240,232,.55); text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    transition: color .2s;
+  }
+  .cta-line-btn::after { content: '→'; transition: transform .2s; }
+  .cta-line-btn:hover { color: var(--accent-light); }
+  .cta-line-btn:hover::after { transform: translateX(4px); }
   .cta-note { margin-top: 24px; font-size: 13px; color: rgba(245,240,232,.3); }
 
   /* ── FOOTER ── */
@@ -563,10 +573,6 @@
     outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
-  .btn-primary:focus-visible, .btn-service:focus-visible, .faq-question:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 3px;
-  }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
@@ -576,8 +582,8 @@
     0%,100% { box-shadow: 0 0 0 0 rgba(196,98,45,.45); }
     60%      { box-shadow: 0 0 0 10px rgba(196,98,45,0); }
   }
-  .btn-primary { animation: pulse 2.8s ease-in-out 2s infinite; }
-  .btn-primary:hover { animation: none; }
+  .hero-actions .btn-primary { animation: pulse 2.8s ease-in-out 2s infinite; }
+  .hero-actions .btn-primary:hover { animation: none; }
   .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
 
@@ -674,8 +680,8 @@
   .mobile-cta-bar a:hover { background: #b05525; }
   @media (max-width: 768px) {
     .mobile-cta-bar { display: block; }
-    body { padding-bottom: 80px; }
-    #backToTop { bottom: 96px; }
+    body { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+    #backToTop { bottom: calc(96px + env(safe-area-inset-bottom)); }
   }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -1394,7 +1400,10 @@
     初談完全免費，我會告訴你我能幫你做什麼、<br>
     你現在最需要處理的是哪一個問題。
   </p>
-  <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary cta-btn--lg" rel="noopener noreferrer">預約免費初談 →</a>
+  <div class="cta-actions">
+    <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary cta-btn--lg" rel="noopener noreferrer">預約免費初談 →</a>
+    <a href="https://lin.ee/IOX6V66" target="_blank" class="cta-line-btn" rel="noopener noreferrer">或先加 LINE 問問看</a>
+  </div>
   <p class="cta-note">通常 24 小時內回覆・線上視訊或文字皆可</p>
 </section>
 
