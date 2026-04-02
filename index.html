@@ -10,11 +10,11 @@
 <meta property="og:description" content="CDA認證・300+小時・服務300+客戶。幫你把說不清楚的能力，說給對方聽得懂。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tzlth-website.vercel.app">
-<meta property="og:image" content="https://raw.githubusercontent.com/shoppy09/tzlth-website/main/photo.jpg">
+<meta property="og:image" content="https://tzlth-website.vercel.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/shoppy09/tzlth-website/main/photo.jpg">
+<meta name="twitter:image" content="https://tzlth-website.vercel.app/og-image.png">
 <meta name="author" content="蒲朝棟 Tim">
 <link rel="canonical" href="https://tzlth-website.vercel.app">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -45,6 +45,21 @@
     font-weight: 300;
     line-height: 1.7;
   }
+
+  /* ── SKIP LINK ── */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    padding: .5rem 1rem;
+    background: var(--accent);
+    color: var(--white);
+    font-size: .875rem;
+    border-radius: 0 0 6px 6px;
+    z-index: 9999;
+    transition: top .2s;
+  }
+  .skip-link:focus { top: 0; }
 
   /* ── NAV ── */
   nav {
@@ -239,38 +254,6 @@
     display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
   }
   .about-left { position: sticky; top: 100px; }
-  .about-photo-placeholder {
-    width: 100%; aspect-ratio: 3/4;
-    background: var(--charcoal);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: flex-end;
-    padding: 40px; position: relative; overflow: hidden;
-  }
-  .about-photo-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(245,240,232,.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,240,232,.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-  }
-  .about-photo-label {
-    position: relative;
-    font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
-    color: rgba(245,240,232,.4); margin-bottom: 12px;
-  }
-  .about-photo-name {
-    position: relative;
-    font-family: 'Playfair Display', serif;
-    font-size: 28px; font-weight: 600; color: var(--cream);
-  }
-  .about-tags {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; position: relative;
-  }
-  .about-tag {
-    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
-    border: 1px solid rgba(196,98,45,.5); color: var(--accent-light);
-    padding: 4px 12px; border-radius: 2px;
-  }
   /* ── CREDENTIAL CARD ── */
   .cred-card {
     background: var(--charcoal); color: var(--cream);
@@ -603,6 +586,101 @@
   .btn-primary:hover { animation: none; }
   .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { padding: 120px 60px; background: var(--charcoal); }
+  .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+  .testimonials-label { color: var(--accent-light); }
+  .testimonials-title { color: var(--cream); margin-bottom: 64px; }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+  .testimonial-card { background: rgba(245,240,232,.06); padding: 44px 36px; border-left: 2px solid var(--accent); position: relative; }
+  .testimonial-quote { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--accent); line-height: 1; margin-bottom: 20px; }
+  .testimonial-text { font-size: 15px; font-weight: 300; color: rgba(245,240,232,.85); line-height: 1.85; margin-bottom: 28px; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .testimonial-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; color: var(--white); flex-shrink: 0; }
+  .testimonial-name { font-size: 13px; font-weight: 500; color: var(--cream); }
+  .testimonial-type { font-size: 11px; color: rgba(245,240,232,.4); letter-spacing: .06em; text-transform: uppercase; }
+  .trust-bar { margin-top: 56px; padding: 36px 44px; background: rgba(245,240,232,.04); border: 1px solid rgba(245,240,232,.1); display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 24px; }
+  .trust-stat { text-align: center; }
+  .trust-cert-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--cream); }
+  .trust-cert-label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(245,240,232,.4); margin-top: 4px; }
+  .trust-divider { width: 1px; height: 40px; background: rgba(245,240,232,.1); }
+  .trust-partners { font-size: 14px; font-weight: 400; color: rgba(245,240,232,.7); line-height: 1.6; }
+  @media (max-width: 768px) {
+    #testimonials { padding: 80px 24px; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .trust-divider { display: none; }
+  }
+
+  /* ── PROCESS ── */
+  #process { padding: 120px 60px; background: var(--white); }
+  .process-inner { max-width: 1100px; margin: 0 auto; }
+  .process-steps { display: grid; grid-template-columns: repeat(5,1fr); gap: 0; margin-top: 64px; }
+  .process-step { padding: 32px 24px; text-align: center; position: relative; }
+  .process-num { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--white); margin: 0 auto 20px; }
+  .process-num-last { background: var(--charcoal); color: var(--cream); }
+  .process-step-title { font-size: 14px; font-weight: 500; color: var(--charcoal); margin-bottom: 8px; }
+  .process-step-desc { font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.6; }
+  .process-arrow { position: absolute; top: 40px; right: -12px; font-size: 18px; color: var(--border); }
+  @media (max-width: 768px) {
+    #process { padding: 80px 24px; }
+    .process-steps { grid-template-columns: 1fr; }
+    .process-arrow { display: none; }
+  }
+
+  /* ── FAQ SECTION ── */
+  #faq { padding: 120px 60px; background: var(--cream); }
+  .faq-inner { max-width: 800px; margin: 0 auto; }
+  .faq-list-wrap { margin-top: 64px; }
+  .faq-contact-box { margin-top: 40px; text-align: center; padding: 32px; background: var(--white); border: 1px solid var(--border); }
+  .faq-contact-text { font-size: 15px; font-weight: 300; color: var(--charcoal-soft); margin-bottom: 20px; }
+  @media (max-width: 768px) { #faq { padding: 80px 24px; } }
+
+  /* ── LEAD CAPTURE ── */
+  #lead { padding: 100px 60px; background: var(--white); }
+  .lead-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+  .lead-label { justify-content: center; margin-bottom: 20px; }
+  .lead-title { font-family: 'Playfair Display', serif; font-size: clamp(24px,2.8vw,36px); font-weight: 600; line-height: 1.3; margin-bottom: 16px; }
+  .lead-desc { font-size: 16px; font-weight: 300; color: var(--charcoal-soft); line-height: 1.8; margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .lead-actions { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .lead-actions .btn-primary { font-size: 15px; padding: 16px 36px; }
+  .lead-actions-note { font-size: 13px; color: var(--muted); font-weight: 300; }
+  @media (max-width: 768px) { #lead { padding: 80px 24px; } }
+
+  /* ── MISC OVERRIDES ── */
+  .section-title--mb32 { margin-bottom: 32px; }
+  .service-note--light { color: rgba(232,168,130,.8); }
+  .cta-btn--lg { font-size: 15px; padding: 18px 40px; }
+
+  /* ── MOBILE STICKY CTA ── */
+  .mobile-cta-bar {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 300;
+    background: var(--charcoal);
+    padding: 12px 20px;
+    box-shadow: 0 -2px 16px rgba(0,0,0,.18);
+  }
+  .mobile-cta-bar a {
+    display: block;
+    text-align: center;
+    background: var(--accent);
+    color: var(--white);
+    font-size: .95rem;
+    font-weight: 500;
+    padding: 13px;
+    border-radius: 4px;
+    text-decoration: none;
+    letter-spacing: .04em;
+    transition: background .2s;
+  }
+  .mobile-cta-bar a:hover { background: #b05525; }
+  @media (max-width: 768px) {
+    .mobile-cta-bar { display: block; }
+    body { padding-bottom: 80px; }
+    #backToTop { bottom: 96px; }
+  }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TK8D1DX7MJ"></script>
@@ -620,7 +698,7 @@
   "alternateName": "Tim Pu",
   "jobTitle": "職涯顧問・CDA職涯發展師・104職涯引導師",
   "url": "https://tzlth-website.vercel.app",
-  "image": "https://raw.githubusercontent.com/shoppy09/tzlth-website/main/photo.jpg",
+  "image": "https://tzlth-website.vercel.app/photo.jpg",
   "email": "shoppy09@gmail.com",
   "sameAs": [
     "https://www.threads.com/@cda_pu_positive_thinking",
@@ -708,6 +786,8 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">跳到主要內容</a>
+
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">職涯<span>停看聽</span></a>
@@ -724,6 +804,9 @@
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
 
 <!-- HERO -->
 <section id="hero">
@@ -861,7 +944,7 @@
     </div>
     <div class="about-right reveal">
       <span class="section-label">關於我</span>
-      <h2 class="section-title" style="margin-bottom:32px;">我做的事，<br>是幫你把能力<em>說清楚</em>。</h2>
+      <h2 class="section-title section-title--mb32">我做的事，<br>是幫你把能力<em>說清楚</em>。</h2>
 
       <p class="about-p">
         我的職涯走過三個截然不同的階段。
@@ -1019,7 +1102,7 @@
           <span class="service-price">NT$2,000</span>
           <span class="service-duration">/ 90 分鐘</span>
         </div>
-        <p class="service-note" style="color:rgba(232,168,130,0.8)">最完整的單次深度諮詢</p>
+        <p class="service-note service-note--light">最完整的單次深度諮詢</p>
         <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service">預約這個方案</a>
       </div>
 
@@ -1116,45 +1199,45 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" style="padding:120px 60px; background:var(--charcoal);">
-  <div style="max-width:1100px; margin:0 auto;">
-    <span class="section-label reveal" style="color:var(--accent-light);">學員真實回饋</span>
-    <h2 class="section-title reveal" style="color:var(--cream); margin-bottom:64px;">他們說的，<br>比我說的更有說服力。</h2>
+<section id="testimonials">
+  <div class="testimonials-inner">
+    <span class="section-label testimonials-label reveal">學員真實回饋</span>
+    <h2 class="section-title testimonials-title reveal">他們說的，<br>比我說的更有說服力。</h2>
 
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px;" class="reveal">
+    <div class="testimonials-grid reveal">
 
-      <div style="background:rgba(245,240,232,0.06); padding:44px 36px; border-left:2px solid var(--accent); position:relative;">
-        <p style="font-family:'Playfair Display',serif; font-size:32px; color:var(--accent); line-height:1; margin-bottom:20px;">"</p>
-        <p style="font-size:15px; font-weight:300; color:rgba(245,240,232,0.85); line-height:1.85; margin-bottom:28px;">老師在過程中很用心地聽我的想法，也會指出細節問題，例如哪些地方前後矛盾、哪些能力需要和目標企業的職位做連結。我能感覺到老師沒有敷衍，反而非常耐心，在我卡住時也會等我把想法整理好。</p>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:36px; height:36px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:500; color:var(--white);">學</div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"</p>
+        <p class="testimonial-text">老師在過程中很用心地聽我的想法，也會指出細節問題，例如哪些地方前後矛盾、哪些能力需要和目標企業的職位做連結。我能感覺到老師沒有敷衍，反而非常耐心，在我卡住時也會等我把想法整理好。</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">學</div>
           <div>
-            <p style="font-size:13px; font-weight:500; color:var(--cream);">模擬面試學員・外商業務轉科技業</p>
-            <p style="font-size:11px; color:rgba(245,240,232,0.4); letter-spacing:.06em; text-transform:uppercase;">Interview Coaching</p>
+            <p class="testimonial-name">模擬面試學員・外商業務轉科技業</p>
+            <p class="testimonial-type">Interview Coaching</p>
           </div>
         </div>
       </div>
 
-      <div style="background:rgba(245,240,232,0.06); padding:44px 36px; border-left:2px solid var(--accent); position:relative;">
-        <p style="font-family:'Playfair Display',serif; font-size:32px; color:var(--accent); line-height:1; margin-bottom:20px;">"</p>
-        <p style="font-size:15px; font-weight:300; color:rgba(245,240,232,0.85); line-height:1.85; margin-bottom:28px;">非常感謝蒲朝棟老師給予的指導及建議，解惑我對履歷投遞設定的相關問題，亦精準又具體地提供修改方向和實例，告訴我們什麼內容可以多加以補充說明、提點撰寫時可以加進去的業界指標。獲益良多！</p>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:36px; height:36px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:500; color:var(--white);">學</div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"</p>
+        <p class="testimonial-text">非常感謝蒲朝棟老師給予的指導及建議，解惑我對履歷投遞設定的相關問題，亦精準又具體地提供修改方向和實例，告訴我們什麼內容可以多加以補充說明、提點撰寫時可以加進去的業界指標。獲益良多！</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">學</div>
           <div>
-            <p style="font-size:13px; font-weight:500; color:var(--cream);">履歷健檢學員・學術研究轉產業界</p>
-            <p style="font-size:11px; color:rgba(245,240,232,0.4); letter-spacing:.06em; text-transform:uppercase;">Resume Review</p>
+            <p class="testimonial-name">履歷健檢學員・學術研究轉產業界</p>
+            <p class="testimonial-type">Resume Review</p>
           </div>
         </div>
       </div>
 
-      <div style="background:rgba(245,240,232,0.06); padding:44px 36px; border-left:2px solid var(--accent); position:relative;">
-        <p style="font-family:'Playfair Display',serif; font-size:32px; color:var(--accent); line-height:1; margin-bottom:20px;">"</p>
-        <p style="font-size:15px; font-weight:300; color:rgba(245,240,232,0.85); line-height:1.85; margin-bottom:28px;">很感謝朝棟老師給我很有建議，尤其是自傳的部分，我當時候不知道怎麼撰寫，我會認為工作經歷已經寫過不因該重複，但是老師給了我很具體的意見，讓我一下就了解了。</p>
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:36px; height:36px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:500; color:var(--white);">學</div>
+      <div class="testimonial-card">
+        <p class="testimonial-quote">"</p>
+        <p class="testimonial-text">很感謝朝棟老師給我很有建議，尤其是自傳的部分，我當時候不知道怎麼撰寫，我會認為工作經歷已經寫過不因該重複，但是老師給了我很具體的意見，讓我一下就了解了。</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">學</div>
           <div>
-            <p style="font-size:13px; font-weight:500; color:var(--cream);">職涯諮詢學員・傳產管理轉新創營運</p>
-            <p style="font-size:11px; color:rgba(245,240,232,0.4); letter-spacing:.06em; text-transform:uppercase;">Career Consulting</p>
+            <p class="testimonial-name">職涯諮詢學員・傳產管理轉新創營運</p>
+            <p class="testimonial-type">Career Consulting</p>
           </div>
         </div>
       </div>
@@ -1162,75 +1245,75 @@
     </div>
 
     <!-- Credentials bar -->
-    <div style="margin-top:56px; padding:36px 44px; background:rgba(245,240,232,0.04); border:1px solid rgba(245,240,232,0.1); display:flex; align-items:center; justify-content:space-around; flex-wrap:wrap; gap:24px;" class="reveal">
-      <div style="text-align:center;">
-        <p style="font-family:'Playfair Display',serif; font-size:28px; font-weight:600; color:var(--cream);">CDA</p>
-        <p style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:rgba(245,240,232,0.4); margin-top:4px;">職涯發展師認證</p>
+    <div class="trust-bar reveal">
+      <div class="trust-stat">
+        <p class="trust-cert-title">CDA</p>
+        <p class="trust-cert-label">職涯發展師認證</p>
       </div>
-      <div style="width:1px; height:40px; background:rgba(245,240,232,0.1);"></div>
-      <div style="text-align:center;">
-        <p style="font-family:'Playfair Display',serif; font-size:28px; font-weight:600; color:var(--cream);">104</p>
-        <p style="font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:rgba(245,240,232,0.4); margin-top:4px;">職涯引導師認證</p>
+      <div class="trust-divider"></div>
+      <div class="trust-stat">
+        <p class="trust-cert-title">104</p>
+        <p class="trust-cert-label">職涯引導師認證</p>
       </div>
-      <div style="width:1px; height:40px; background:rgba(245,240,232,0.1);"></div>
-      <div style="text-align:center;">
-        <p style="font-size:14px; font-weight:400; color:rgba(245,240,232,0.7); line-height:1.6;">桃園青年局・桃園市政府就業職訓<br>大專院校 合作授課</p>
+      <div class="trust-divider"></div>
+      <div class="trust-stat">
+        <p class="trust-partners">桃園青年局・桃園市政府就業職訓<br>大專院校 合作授課</p>
       </div>
-      <div style="width:1px; height:40px; background:rgba(245,240,232,0.1);"></div>
-      <div style="text-align:center;">
-        <p style="font-size:14px; font-weight:400; color:rgba(245,240,232,0.7); line-height:1.6;">轉職成功・取得 Offer<br>找到求職方向</p>
+      <div class="trust-divider"></div>
+      <div class="trust-stat">
+        <p class="trust-partners">轉職成功・取得 Offer<br>找到求職方向</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section id="process" style="padding:120px 60px; background:var(--white);">
-  <div style="max-width:1100px; margin:0 auto;">
+<section id="process">
+  <div class="process-inner">
     <span class="section-label reveal">諮詢流程</span>
     <h2 class="section-title reveal">預約之後，<br>會發生什麼事？</h2>
 
-    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:0; margin-top:64px;" class="reveal">
-      <div style="padding:32px 24px; text-align:center; position:relative;">
-        <div style="width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--white); margin:0 auto 20px;">1</div>
-        <p style="font-size:14px; font-weight:500; color:var(--charcoal); margin-bottom:8px;">填寫預約表單</p>
-        <p style="font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;">說明你的狀況與需求，不需要完整準備</p>
-        <div class="process-arrow" style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <p class="process-step-title">填寫預約表單</p>
+        <p class="process-step-desc">說明你的狀況與需求，不需要完整準備</p>
+        <div class="process-arrow">→</div>
       </div>
-      <div style="padding:32px 24px; text-align:center; position:relative;">
-        <div style="width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--white); margin:0 auto 20px;">2</div>
-        <p style="font-size:14px; font-weight:500; color:var(--charcoal); margin-bottom:8px;">確認時間與付款</p>
-        <p style="font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;">24小時內回覆，確認諮詢時間與方式</p>
-        <div class="process-arrow" style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <p class="process-step-title">確認時間與付款</p>
+        <p class="process-step-desc">24小時內回覆，確認諮詢時間與方式</p>
+        <div class="process-arrow">→</div>
       </div>
-      <div style="padding:32px 24px; text-align:center; position:relative;">
-        <div style="width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--white); margin:0 auto 20px;">3</div>
-        <p style="font-size:14px; font-weight:500; color:var(--charcoal); margin-bottom:8px;">提供資料</p>
-        <p style="font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;">提前 3 天提供履歷或相關資料，讓我預先了解你</p>
-        <div class="process-arrow" style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <p class="process-step-title">提供資料</p>
+        <p class="process-step-desc">提前 3 天提供履歷或相關資料，讓我預先了解你</p>
+        <div class="process-arrow">→</div>
       </div>
-      <div style="padding:32px 24px; text-align:center; position:relative;">
-        <div style="width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--white); margin:0 auto 20px;">4</div>
-        <p style="font-size:14px; font-weight:500; color:var(--charcoal); margin-bottom:8px;">進行諮詢</p>
-        <p style="font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;">線上視訊或面談，深度對話 60–90 分鐘</p>
-        <div class="process-arrow" style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
+      <div class="process-step">
+        <div class="process-num">4</div>
+        <p class="process-step-title">進行諮詢</p>
+        <p class="process-step-desc">線上視訊或面談，深度對話 60–90 分鐘</p>
+        <div class="process-arrow">→</div>
       </div>
-      <div style="padding:32px 24px; text-align:center;">
-        <div style="width:48px; height:48px; border-radius:50%; background:var(--charcoal); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--cream); margin:0 auto 20px;">5</div>
-        <p style="font-size:14px; font-weight:500; color:var(--charcoal); margin-bottom:8px;">書面摘要</p>
-        <p style="font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;">24小時內收到諮詢重點與行動建議書面摘要</p>
+      <div class="process-step">
+        <div class="process-num process-num-last">5</div>
+        <p class="process-step-title">書面摘要</p>
+        <p class="process-step-desc">24小時內收到諮詢重點與行動建議書面摘要</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section id="faq" style="padding:120px 60px; background:var(--cream);">
-  <div style="max-width:800px; margin:0 auto;">
+<section id="faq">
+  <div class="faq-inner">
     <span class="section-label reveal">常見問題</span>
     <h2 class="section-title reveal">預約前，<br>你可能想知道這些。</h2>
 
-    <div class="reveal" style="margin-top:64px;" id="faqList">
+    <div class="faq-list-wrap reveal" id="faqList">
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           諮詢是用什麼方式進行？
@@ -1275,8 +1358,8 @@
       </div>
     </div>
 
-    <div style="margin-top:40px; text-align:center; padding:32px; background:var(--white); border:1px solid var(--border);">
-      <p style="font-size:15px; font-weight:300; color:var(--charcoal-soft); margin-bottom:20px;">還有其他問題？直接加 LINE 問我，通常當天回覆。</p>
+    <div class="faq-contact-box">
+      <p class="faq-contact-text">還有其他問題？直接加 LINE 問我，通常當天回覆。</p>
       <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary">加入 LINE 官方帳號</a>
     </div>
   </div>
@@ -1284,20 +1367,20 @@
 
 
 <!-- LEAD CAPTURE -->
-<section id="lead" style="padding:100px 60px; background:var(--white);">
-  <div style="max-width:780px; margin:0 auto; text-align:center;" class="reveal">
-    <span class="section-label" style="justify-content:center; margin-bottom:20px;">免費資源</span>
-    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(24px,2.8vw,36px); font-weight:600; line-height:1.3; margin-bottom:16px;">
+<section id="lead">
+  <div class="lead-inner reveal">
+    <span class="section-label lead-label">免費資源</span>
+    <h2 class="lead-title">
       還沒準備好預約？<br>先拿走這份免費清單。
     </h2>
-    <p style="font-size:16px; font-weight:300; color:var(--charcoal-soft); line-height:1.8; margin-bottom:40px; max-width:520px; margin-left:auto; margin-right:auto;">
+    <p class="lead-desc">
       「<strong>讓履歷被看見的 5 個關鍵句型</strong>」——我把最常幫客戶重寫的句型整理成一頁清單，加 LINE 就直接傳給你，不需要填表單。
     </p>
-    <div style="display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
-      <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary" style="font-size:15px; padding:16px 36px;">
+    <div class="lead-actions">
+      <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary">
         加 LINE 免費索取 →
       </a>
-      <p style="font-size:13px; color:var(--muted); font-weight:300;">通常當天回覆・無任何銷售壓力</p>
+      <p class="lead-actions-note">通常當天回覆・無任何銷售壓力</p>
     </div>
   </div>
 </section>
@@ -1312,12 +1395,19 @@
     初談完全免費，我會告訴你我能幫你做什麼、<br>
     你現在最需要處理的是哪一個問題。
   </p>
-  <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary" style="font-size:15px;padding:18px 40px;">預約免費初談 →</a>
+  <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary cta-btn--lg">預約免費初談 →</a>
   <p class="cta-note">通常 24 小時內回覆・線上視訊或文字皆可</p>
 </section>
 
 <!-- BACK TO TOP -->
 <button id="backToTop" aria-label="回到頂部">↑</button>
+
+</main>
+
+<!-- MOBILE STICKY CTA -->
+<div class="mobile-cta-bar" aria-label="預約諮詢">
+  <a href="https://my-booking-system.onrender.com/" target="_blank" rel="noopener">立即預約諮詢 →</a>
+</div>
 
 <!-- FOOTER -->
 <footer>
