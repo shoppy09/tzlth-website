@@ -594,6 +594,7 @@
   .testimonials-title { color: var(--cream); margin-bottom: 64px; }
   .testimonials-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
   .testimonial-card { background: rgba(245,240,232,.06); padding: 44px 36px; border-left: 2px solid var(--accent); position: relative; }
+  .testimonial-stars { color: #F5A623; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; }
   .testimonial-quote { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--accent); line-height: 1; margin-bottom: 20px; }
   .testimonial-text { font-size: 15px; font-weight: 300; color: rgba(245,240,232,.85); line-height: 1.85; margin-bottom: 28px; }
   .testimonial-author { display: flex; align-items: center; gap: 12px; }
@@ -660,6 +661,7 @@
     z-index: 300;
     background: var(--charcoal);
     padding: 12px 20px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
     box-shadow: 0 -2px 16px rgba(0,0,0,.18);
   }
   .mobile-cta-bar a {
@@ -826,15 +828,15 @@
     </div>
     <div class="hero-stat">
       <div>
-        <span class="stat-num">300+</span>
+        <span class="stat-num" data-count="300" data-suffix="+">300+</span>
         <span class="stat-label">服務客戶</span>
       </div>
       <div>
-        <span class="stat-num">300+</span>
+        <span class="stat-num" data-count="300" data-suffix="+">300+</span>
         <span class="stat-label">諮詢時數</span>
       </div>
       <div>
-        <span class="stat-num">20+</span>
+        <span class="stat-num" data-count="20" data-suffix="+">20+</span>
         <span class="stat-label">年跨領域歷練</span>
       </div>
     </div>
@@ -1070,7 +1072,7 @@
     <div class="services-grid reveal">
 
       <div class="service-card">
-        <p class="service-code">S1</p>
+        <p class="service-code">01</p>
         <h3 class="service-name">職涯諮詢<br>（一對一）</h3>
         <p class="service-desc">適合：感覺卡住但說不清楚卡在哪，或需要外部視角確認方向的人。</p>
         <ul class="service-includes">
@@ -1089,7 +1091,7 @@
 
       <div class="service-card featured">
         <div class="service-badge">最多人選擇</div>
-        <p class="service-code">S4</p>
+        <p class="service-code">02</p>
         <h3 class="service-name">職場轉型<br>諮詢</h3>
         <p class="service-desc">適合：有 3–10 年經驗、正在轉型路口、或有一段說不清楚的職涯需要重新包裝的人。</p>
         <ul class="service-includes">
@@ -1107,7 +1109,7 @@
       </div>
 
       <div class="service-card">
-        <p class="service-code">S6</p>
+        <p class="service-code">03</p>
         <h3 class="service-name">職涯陪跑<br>方案</h3>
         <p class="service-desc">適合：需要從頭到尾完整支援——方向確認、履歷重寫、面試練習、offer 談判。</p>
         <ul class="service-includes">
@@ -1207,6 +1209,7 @@
     <div class="testimonials-grid reveal">
 
       <div class="testimonial-card">
+        <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">老師在過程中很用心地聽我的想法，也會指出細節問題，例如哪些地方前後矛盾、哪些能力需要和目標企業的職位做連結。我能感覺到老師沒有敷衍，反而非常耐心，在我卡住時也會等我把想法整理好。</p>
         <div class="testimonial-author">
@@ -1219,6 +1222,7 @@
       </div>
 
       <div class="testimonial-card">
+        <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">非常感謝蒲朝棟老師給予的指導及建議，解惑我對履歷投遞設定的相關問題，亦精準又具體地提供修改方向和實例，告訴我們什麼內容可以多加以補充說明、提點撰寫時可以加進去的業界指標。獲益良多！</p>
         <div class="testimonial-author">
@@ -1231,8 +1235,9 @@
       </div>
 
       <div class="testimonial-card">
+        <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
-        <p class="testimonial-text">很感謝朝棟老師給我很有建議，尤其是自傳的部分，我當時候不知道怎麼撰寫，我會認為工作經歷已經寫過不因該重複，但是老師給了我很具體的意見，讓我一下就了解了。</p>
+        <p class="testimonial-text">很感謝朝棟老師給我很有用的建議，尤其是自傳的部分，我當時候不知道怎麼撰寫，我會認為工作經歷已經寫過不應該重複，但是老師給了我很具體的意見，讓我一下就了解了。</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">學</div>
           <div>
@@ -1413,9 +1418,9 @@
 <footer>
   <p class="footer-logo">職涯停看聽</p>
   <ul class="footer-links">
-    <li><a href="https://www.threads.com/@cda_pu_positive_thinking" target="_blank">Threads</a></li>
-    <li><a href="https://www.instagram.com/cda_pu_positive_thinking/" target="_blank">Instagram</a></li>
-    <li><a href="https://lin.ee/IOX6V66" target="_blank">LINE 官方帳號</a></li>
+    <li><a href="https://www.threads.com/@cda_pu_positive_thinking" target="_blank" rel="noopener noreferrer">Threads</a></li>
+    <li><a href="https://www.instagram.com/cda_pu_positive_thinking/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+    <li><a href="https://lin.ee/IOX6V66" target="_blank" rel="noopener noreferrer">LINE 官方帳號</a></li>
     <li><a href="/cdn-cgi/l/email-protection#f182999e818188c1c8b1969c90989ddf929e9c">Email</a></li>
   </ul>
   <p class="footer-copy">© 2026 職涯停看聽</p>
@@ -1502,6 +1507,49 @@ document.addEventListener("DOMContentLoaded", function() {
   }, { passive: true });
   topBtn.addEventListener("click", function() {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Count-up animation for hero stats
+  function animateCount(el) {
+    var target = parseInt(el.dataset.count, 10);
+    var suffix = el.dataset.suffix || "";
+    var duration = 1200;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var countEls = document.querySelectorAll(".stat-num[data-count]");
+  if ("IntersectionObserver" in window && countEls.length) {
+    var countObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          countObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    countEls.forEach(function(el) { countObs.observe(el); });
+  }
+
+  // GA click event tracking for CTA buttons
+  document.querySelectorAll("a[href*='booking'], a[href*='lin.ee']").forEach(function(a) {
+    a.addEventListener("click", function() {
+      if (typeof gtag === "function") {
+        var label = a.textContent.trim().substring(0, 40);
+        var category = a.href.includes("lin.ee") ? "line" : "booking";
+        gtag("event", "cta_click", {
+          event_category: category,
+          event_label: label,
+          value: 1
+        });
+      }
+    });
   });
 });
 </script>
