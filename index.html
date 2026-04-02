@@ -17,6 +17,8 @@
 <meta name="twitter:image" content="https://raw.githubusercontent.com/shoppy09/tzlth-website/main/photo.jpg">
 <meta name="author" content="蒲朝棟 Tim">
 <link rel="canonical" href="https://tzlth-website.vercel.app">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" as="image" href="photo.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -147,6 +149,11 @@
     position: relative; background: var(--charcoal);
     overflow: hidden; animation: fadeIn 1.2s ease .4s both;
   }
+  .hero-photo {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    opacity: .72;
+  }
   .hero-grid {
     position: absolute; inset: 0;
     background-image:
@@ -167,6 +174,7 @@
     position: absolute; inset: 0;
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 60px 56px;
+    background: linear-gradient(to top, rgba(28,28,26,.85) 0%, rgba(28,28,26,.2) 55%, transparent 100%);
   }
   .hero-quote {
     font-family: 'Playfair Display', serif;
@@ -456,6 +464,7 @@
     .services-row2 { grid-template-columns:1fr; }
     .method-grid { grid-template-columns:1fr; }
     #pain, #about, #cases, #services, #testimonials, #process, #method, #faq, #cta { padding:80px 24px; }
+    #process .process-arrow { transform: rotate(90deg); }
     footer { flex-direction:column; gap:24px; text-align:center; padding:40px 24px; }
     .footer-links { flex-wrap:wrap; justify-content:center; }
     [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns:1fr !important; }
@@ -509,10 +518,26 @@
   #backToTop.visible { opacity: 1; pointer-events: auto; }
   #backToTop:hover { background: var(--accent); transform: translateY(-2px); }
 
+  /* ── FOCUS / ACCESSIBILITY ── */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+  .btn-primary:focus-visible, .btn-service:focus-visible, .faq-question:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeDown { from{opacity:0;transform:translateY(-12px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 0 rgba(196,98,45,.45); }
+    60%      { box-shadow: 0 0 0 10px rgba(196,98,45,0); }
+  }
+  .btn-primary { animation: pulse 2.8s ease-in-out 2s infinite; }
+  .btn-primary:hover { animation: none; }
   .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
 </style>
@@ -589,6 +614,34 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "職涯諮詢（一對一）",
+    "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
+    "description": "60 分鐘深度對談，幫你把職涯困境說清楚、看清楚，諮詢後 24 小時內書面摘要。",
+    "offers": {"@type": "Offer", "price": "1500", "priceCurrency": "TWD"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "職場轉型諮詢",
+    "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
+    "description": "90 分鐘深度策略諮詢，職能轉譯矩陣分析＋職涯敘事重構建議＋完整書面策略報告。",
+    "offers": {"@type": "Offer", "price": "2000", "priceCurrency": "TWD"}
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "職涯陪跑方案",
+    "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
+    "description": "每月 4 次諮詢，涵蓋方向確認、履歷重寫、面試練習、offer 談判全程支援。",
+    "offers": {"@type": "Offer", "price": "6000", "priceCurrency": "TWD"}
+  }
+]
+</script>
 </head>
 <body>
 
@@ -641,6 +694,10 @@
     </div>
   </div>
   <div class="hero-right">
+    <picture>
+      <source srcset="photo.webp" type="image/webp">
+      <img src="photo.jpg" alt="蒲朝棟 Tim" class="hero-photo">
+    </picture>
     <div class="hero-grid"></div>
     <div class="hero-circle"></div>
     <div class="hero-right-inner">
@@ -979,7 +1036,7 @@
         <div style="display:flex; align-items:center; gap:12px;">
           <div style="width:36px; height:36px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:500; color:var(--white);">學</div>
           <div>
-            <p style="font-size:13px; font-weight:500; color:var(--cream);">模擬面試學員</p>
+            <p style="font-size:13px; font-weight:500; color:var(--cream);">模擬面試學員・外商業務轉科技業</p>
             <p style="font-size:11px; color:rgba(245,240,232,0.4); letter-spacing:.06em; text-transform:uppercase;">Interview Coaching</p>
           </div>
         </div>
@@ -991,7 +1048,7 @@
         <div style="display:flex; align-items:center; gap:12px;">
           <div style="width:36px; height:36px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:500; color:var(--white);">學</div>
           <div>
-            <p style="font-size:13px; font-weight:500; color:var(--cream);">履歷健檢學員</p>
+            <p style="font-size:13px; font-weight:500; color:var(--cream);">履歷健檢學員・學術研究轉產業界</p>
             <p style="font-size:11px; color:rgba(245,240,232,0.4); letter-spacing:.06em; text-transform:uppercase;">Resume Review</p>
           </div>
         </div>
@@ -1003,7 +1060,7 @@
         <div style="display:flex; align-items:center; gap:12px;">
           <div style="width:36px; height:36px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:500; color:var(--white);">學</div>
           <div>
-            <p style="font-size:13px; font-weight:500; color:var(--cream);">職涯諮詢學員</p>
+            <p style="font-size:13px; font-weight:500; color:var(--cream);">職涯諮詢學員・傳產管理轉新創營運</p>
             <p style="font-size:11px; color:rgba(245,240,232,0.4); letter-spacing:.06em; text-transform:uppercase;">Career Consulting</p>
           </div>
         </div>
@@ -1045,25 +1102,25 @@
         <div style="width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--white); margin:0 auto 20px;">1</div>
         <p style="font-size:14px; font-weight:500; color:var(--charcoal); margin-bottom:8px;">填寫預約表單</p>
         <p style="font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;">說明你的狀況與需求，不需要完整準備</p>
-        <div style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
+        <div class="process-arrow" style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
       </div>
       <div style="padding:32px 24px; text-align:center; position:relative;">
         <div style="width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--white); margin:0 auto 20px;">2</div>
         <p style="font-size:14px; font-weight:500; color:var(--charcoal); margin-bottom:8px;">確認時間與付款</p>
         <p style="font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;">24小時內回覆，確認諮詢時間與方式</p>
-        <div style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
+        <div class="process-arrow" style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
       </div>
       <div style="padding:32px 24px; text-align:center; position:relative;">
         <div style="width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--white); margin:0 auto 20px;">3</div>
         <p style="font-size:14px; font-weight:500; color:var(--charcoal); margin-bottom:8px;">提供資料</p>
         <p style="font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;">提前 3 天提供履歷或相關資料，讓我預先了解你</p>
-        <div style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
+        <div class="process-arrow" style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
       </div>
       <div style="padding:32px 24px; text-align:center; position:relative;">
         <div style="width:48px; height:48px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--white); margin:0 auto 20px;">4</div>
         <p style="font-size:14px; font-weight:500; color:var(--charcoal); margin-bottom:8px;">進行諮詢</p>
         <p style="font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;">線上視訊或面談，深度對話 60–90 分鐘</p>
-        <div style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
+        <div class="process-arrow" style="position:absolute; top:40px; right:-12px; font-size:18px; color:var(--border);">→</div>
       </div>
       <div style="padding:32px 24px; text-align:center;">
         <div style="width:48px; height:48px; border-radius:50%; background:var(--charcoal); display:flex; align-items:center; justify-content:center; font-family:'Playfair Display',serif; font-size:20px; font-weight:600; color:var(--cream); margin:0 auto 20px;">5</div>
@@ -1133,6 +1190,25 @@
 </section>
 
 
+<!-- LEAD CAPTURE -->
+<section id="lead" style="padding:100px 60px; background:var(--white);">
+  <div style="max-width:780px; margin:0 auto; text-align:center;" class="reveal">
+    <span class="section-label" style="justify-content:center; margin-bottom:20px;">免費資源</span>
+    <h2 style="font-family:'Playfair Display',serif; font-size:clamp(24px,2.8vw,36px); font-weight:600; line-height:1.3; margin-bottom:16px;">
+      還沒準備好預約？<br>先拿走這份免費清單。
+    </h2>
+    <p style="font-size:16px; font-weight:300; color:var(--charcoal-soft); line-height:1.8; margin-bottom:40px; max-width:520px; margin-left:auto; margin-right:auto;">
+      「<strong>讓履歷被看見的 5 個關鍵句型</strong>」——我把最常幫客戶重寫的句型整理成一頁清單，加 LINE 就直接傳給你，不需要填表單。
+    </p>
+    <div style="display:flex; align-items:center; justify-content:center; gap:16px; flex-wrap:wrap;">
+      <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary" style="font-size:15px; padding:16px 36px;">
+        加 LINE 免費索取 →
+      </a>
+      <p style="font-size:13px; color:var(--muted); font-weight:300;">通常當天回覆・無任何銷售壓力</p>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section id="cta">
   <p class="cta-eyebrow">開始的第一步</p>
@@ -1159,7 +1235,7 @@
     <li><a href="https://lin.ee/IOX6V66" target="_blank">LINE 官方帳號</a></li>
     <li><a href="/cdn-cgi/l/email-protection#f182999e818188c1c8b1969c90989ddf929e9c">Email</a></li>
   </ul>
-  <p class="footer-copy">© 2025 職涯停看聽</p>
+  <p class="footer-copy">© 2026 職涯停看聽</p>
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
