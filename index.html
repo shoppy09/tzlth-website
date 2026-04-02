@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>職涯諮詢｜履歷健檢｜轉職輔導 - 職涯停看聽 蒲朝棟 Tim</title>
 <meta name="description" content="蒲朝棟 Tim，CDA認證職涯引導師，300+小時諮詢經驗。提供一對一職涯諮詢、履歷健檢、模擬面試與轉職策略。幫助有3-10年經驗的專業人士突破卡關，找到被市場看見的語言。">
 <meta name="keywords" content="職涯諮詢,履歷健檢,轉職諮詢,職涯顧問,模擬面試,履歷修改,職涯引導師,蒲朝棟,Tim,職涯停看聽">
@@ -513,14 +513,8 @@
     #process .process-arrow { transform: rotate(90deg); }
     footer { flex-direction:column; gap:24px; text-align:center; padding:40px 24px; }
     .footer-links { flex-wrap:wrap; justify-content:center; }
-    [style*="grid-template-columns:repeat(3,1fr)"] { grid-template-columns:1fr !important; }
-    [style*="grid-template-columns:repeat(5,1fr)"] { grid-template-columns:1fr 1fr !important; }
-    [style*="justify-content:space-around"] { flex-direction:column; align-items:center; }
-    [style*="width:1px; height:40px"] { width:40px !important; height:1px !important; }
     .pain-footer { flex-direction:column; gap:24px; }
     .hero-actions { flex-direction:column; align-items:flex-start; }
-    /* LINE & 預約按鈕在手機漢堡選單內正常顯示，只隱藏橫排 nav 中的版本 */
-    nav > .nav-line, nav > .nav-cta { display:none; }
   }
 
   /* ── NAV ACTIVE STATE ── */
@@ -791,7 +785,7 @@
 <a href="#main-content" class="skip-link">跳到主要內容</a>
 
 <!-- NAV -->
-<nav>
+<nav aria-label="主要導覽">
   <a href="#" class="nav-logo">職涯<span>停看聽</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">關於我</a></li>
@@ -799,8 +793,8 @@
     <li><a href="#services">服務與定價</a></li>
     <li><a href="#testimonials">學員回饋</a></li>
     <li><a href="#faq">常見問題</a></li>
-    <li><a href="https://lin.ee/IOX6V66" target="_blank" class="nav-line">LINE 聯絡</a></li>
-    <li><a href="https://my-booking-system.onrender.com/" target="_blank" class="nav-cta">預約諮詢</a></li>
+    <li><a href="https://lin.ee/IOX6V66" target="_blank" class="nav-line" rel="noopener noreferrer">LINE 聯絡</a></li>
+    <li><a href="https://my-booking-system.onrender.com/" target="_blank" class="nav-cta" rel="noopener noreferrer">預約諮詢</a></li>
   </ul>
   <button class="hamburger" id="hamburgerBtn" aria-label="開啟選單" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -823,7 +817,7 @@
       不是包裝，是翻譯。
     </p>
     <div class="hero-actions">
-      <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary">預約免費初談</a>
+      <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary" rel="noopener noreferrer">預約免費初談</a>
       <a href="#cases" class="btn-ghost">看客戶案例</a>
     </div>
     <div class="hero-stat">
@@ -894,7 +888,7 @@
       這些問題，我每週都在處理。<br>
       答案從來不是「努力更多」，是找到正確的角度說自己。
     </p>
-    <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary">來聊聊</a>
+    <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary" rel="noopener noreferrer">來聊聊</a>
   </div>
 </section>
 
@@ -992,7 +986,7 @@
         </div>
       </div>
 
-      <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary">預約一次諮詢，看看我能幫你什麼</a>
+      <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary" rel="noopener noreferrer">預約一次諮詢，看看我能幫你什麼</a>
     </div>
   </div>
 </section>
@@ -1086,7 +1080,7 @@
           <span class="service-duration">/ 60 分鐘</span>
         </div>
         <p class="service-note">首次實付 NT$1,300</p>
-        <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service">預約這個方案</a>
+        <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service" rel="noopener noreferrer">預約這個方案</a>
       </div>
 
       <div class="service-card featured">
@@ -1105,7 +1099,7 @@
           <span class="service-duration">/ 90 分鐘</span>
         </div>
         <p class="service-note service-note--light">最完整的單次深度諮詢</p>
-        <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service">預約這個方案</a>
+        <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service" rel="noopener noreferrer">預約這個方案</a>
       </div>
 
       <div class="service-card">
@@ -1123,7 +1117,7 @@
           <span class="service-duration">/ 月</span>
         </div>
         <p class="service-note">相當於每次 NT$1,500</p>
-        <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service">了解陪跑方案</a>
+        <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service" rel="noopener noreferrer">了解陪跑方案</a>
       </div>
 
     </div>
@@ -1149,7 +1143,7 @@
 
     <p class="services-footnote reveal">
       不確定哪個方案適合你？先說說你的狀況，我會在 24 小時內回覆建議。
-      <a href="https://my-booking-system.onrender.com/" target="_blank">免費說說看 →</a>
+      <a href="https://my-booking-system.onrender.com/" target="_blank" rel="noopener noreferrer">免費說說看 →</a>
     </p>
   </div>
 </section>
@@ -1365,7 +1359,7 @@
 
     <div class="faq-contact-box">
       <p class="faq-contact-text">還有其他問題？直接加 LINE 問我，通常當天回覆。</p>
-      <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary">加入 LINE 官方帳號</a>
+      <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary" rel="noopener noreferrer">加入 LINE 官方帳號</a>
     </div>
   </div>
 </section>
@@ -1382,7 +1376,7 @@
       「<strong>讓履歷被看見的 5 個關鍵句型</strong>」——我把最常幫客戶重寫的句型整理成一頁清單，加 LINE 就直接傳給你，不需要填表單。
     </p>
     <div class="lead-actions">
-      <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary">
+      <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary" rel="noopener noreferrer">
         加 LINE 免費索取 →
       </a>
       <p class="lead-actions-note">通常當天回覆・無任何銷售壓力</p>
@@ -1400,7 +1394,7 @@
     初談完全免費，我會告訴你我能幫你做什麼、<br>
     你現在最需要處理的是哪一個問題。
   </p>
-  <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary cta-btn--lg">預約免費初談 →</a>
+  <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary cta-btn--lg" rel="noopener noreferrer">預約免費初談 →</a>
   <p class="cta-note">通常 24 小時內回覆・線上視訊或文字皆可</p>
 </section>
 
@@ -1411,7 +1405,7 @@
 
 <!-- MOBILE STICKY CTA -->
 <div class="mobile-cta-bar" aria-label="預約諮詢">
-  <a href="https://my-booking-system.onrender.com/" target="_blank" rel="noopener">立即預約諮詢 →</a>
+  <a href="https://my-booking-system.onrender.com/" target="_blank" rel="noopener noreferrer">立即預約諮詢 →</a>
 </div>
 
 <!-- FOOTER -->
