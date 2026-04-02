@@ -271,6 +271,69 @@
     border: 1px solid rgba(196,98,45,.5); color: var(--accent-light);
     padding: 4px 12px; border-radius: 2px;
   }
+  /* ── CREDENTIAL CARD ── */
+  .cred-card {
+    background: var(--charcoal); color: var(--cream);
+    width: 100%; position: relative; overflow: hidden;
+  }
+  .cred-card-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(245,240,232,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,240,232,.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+  .cred-inner { position: relative; padding: 44px 40px; }
+  .cred-header { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(245,240,232,.1); }
+  .cred-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 600; color: var(--cream);
+    margin-bottom: 6px;
+  }
+  .cred-title { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: rgba(245,240,232,.4); }
+  .cred-stats {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 0; margin-bottom: 32px;
+    border: 1px solid rgba(245,240,232,.1);
+  }
+  .cred-stat {
+    padding: 20px 16px; text-align: center;
+    border-right: 1px solid rgba(245,240,232,.1);
+  }
+  .cred-stat:last-child { border-right: none; }
+  .cred-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 600; color: var(--cream);
+    display: block; line-height: 1;
+  }
+  .cred-stat-label { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: rgba(245,240,232,.35); margin-top: 6px; display: block; }
+  .cred-certs { margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .cred-cert {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 18px;
+    background: rgba(196,98,45,.12); border-left: 2px solid var(--accent);
+  }
+  .cred-cert-badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 600; color: var(--accent);
+    min-width: 44px;
+  }
+  .cred-cert-text { font-size: 13px; font-weight: 300; color: rgba(245,240,232,.75); line-height: 1.5; }
+  .cred-partners {
+    padding: 16px 18px;
+    border: 1px solid rgba(245,240,232,.1);
+    font-size: 12px; font-weight: 300;
+    color: rgba(245,240,232,.45); line-height: 1.8;
+    text-align: center;
+  }
+  .cred-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 28px; }
+  .cred-tag {
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    border: 1px solid rgba(196,98,45,.4); color: var(--accent-light);
+    padding: 5px 14px; border-radius: 2px;
+  }
+
   .about-right {}
   .about-p {
     font-size: 16px; font-weight: 300; color: var(--charcoal-soft);
@@ -754,14 +817,44 @@
 <section id="about">
   <div class="about-inner">
     <div class="about-left reveal">
-      <div class="about-photo-placeholder" style="padding:0;">
-        <img src="photo.jpg" alt="蒲朝棟 Tim - 職涯顧問・CDA職涯發展師" loading="lazy" alt="Tim" style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;border-radius:0;">
-        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 36px;background:linear-gradient(transparent,rgba(28,28,26,0.88));">
-          <p class="about-photo-name">蒲朝棟 Tim</p>
-          <div class="about-tags">
-            <span class="about-tag">職涯顧問</span>
-            <span class="about-tag">講師</span>
-            <span class="about-tag">在職斜槓實踐者</span>
+      <div class="cred-card">
+        <div class="cred-card-grid"></div>
+        <div class="cred-inner">
+          <div class="cred-header">
+            <p class="cred-name">蒲朝棟 Tim</p>
+            <p class="cred-title">Career Consultant · Trainer · Practitioner</p>
+          </div>
+          <div class="cred-stats">
+            <div class="cred-stat">
+              <span class="cred-stat-num">300+</span>
+              <span class="cred-stat-label">服務客戶</span>
+            </div>
+            <div class="cred-stat">
+              <span class="cred-stat-num">300+</span>
+              <span class="cred-stat-label">諮詢時數</span>
+            </div>
+            <div class="cred-stat">
+              <span class="cred-stat-num">20+</span>
+              <span class="cred-stat-label">年跨領域歷練</span>
+            </div>
+          </div>
+          <div class="cred-certs">
+            <div class="cred-cert">
+              <span class="cred-cert-badge">CDA</span>
+              <span class="cred-cert-text">職涯發展師認證<br>Career Development Advisor</span>
+            </div>
+            <div class="cred-cert">
+              <span class="cred-cert-badge">104</span>
+              <span class="cred-cert-text">職涯引導師認證<br>104 Career Coach</span>
+            </div>
+          </div>
+          <div class="cred-partners">
+            桃園青年局・桃園市政府就業職訓<br>大專院校　合作授課
+          </div>
+          <div class="cred-tags">
+            <span class="cred-tag">職涯顧問</span>
+            <span class="cred-tag">講師</span>
+            <span class="cred-tag">在職斜槓實踐者</span>
           </div>
         </div>
       </div>
