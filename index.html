@@ -13,7 +13,10 @@
 <meta property="og:image" content="https://tzlth-website.vercel.app/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="職涯停看聽｜蒲朝棟 Tim - 職涯諮詢 履歷健檢 轉職輔導">
+<meta name="twitter:description" content="CDA認證・300+小時・服務300+客戶。幫你把說不清楚的能力，說給對方聽得懂。">
 <meta name="twitter:image" content="https://tzlth-website.vercel.app/og-image.png">
 <meta name="author" content="蒲朝棟 Tim">
 <link rel="canonical" href="https://tzlth-website.vercel.app">
@@ -736,11 +739,20 @@
   "url": "https://tzlth-website.vercel.app",
   "image": "https://tzlth-website.vercel.app/photo.jpg",
   "email": "shoppy09@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "桃園市",
+    "addressCountry": "TW"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "台灣"
+  },
   "sameAs": [
     "https://www.threads.com/@cda_pu_positive_thinking",
     "https://www.instagram.com/cda_pu_positive_thinking/"
   ],
-  "knowsAbout": ["職涯諮詢", "履歷健檢", "模擬面試", "職場轉型", "斜槓職涯"],
+  "knowsAbout": ["職涯諮詢", "履歷健檢", "模擬面試", "職場轉型", "斜槓職涯", "轉職策略", "履歷撰寫"],
   "description": "CDA認證職涯發展師，300+小時諮詢經驗，服務300+客戶。專注幫助3-10年工作經驗的專業人士突破職涯卡關。",
   "hasCredential": [
     {"@type": "EducationalOccupationalCredential", "name": "CDA職涯發展師認證"},
@@ -792,32 +804,56 @@
 }
 </script>
 <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "職涯諮詢（一對一）",
-    "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
-    "description": "60 分鐘深度對談，幫你把職涯困境說清楚、看清楚，諮詢後 24 小時內書面摘要。",
-    "offers": {"@type": "Offer", "price": "1500", "priceCurrency": "TWD"}
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "職場轉型諮詢",
-    "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
-    "description": "90 分鐘深度策略諮詢，職能轉譯矩陣分析＋職涯敘事重構建議＋完整書面策略報告。",
-    "offers": {"@type": "Offer", "price": "2000", "priceCurrency": "TWD"}
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "職涯陪跑方案",
-    "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
-    "description": "每月 4 次諮詢，涵蓋方向確認、履歷重寫、面試練習、offer 談判全程支援。",
-    "offers": {"@type": "Offer", "price": "6000", "priceCurrency": "TWD"}
-  }
-]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "職涯諮詢（一對一）",
+      "serviceType": "職涯諮詢",
+      "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
+      "areaServed": {"@type": "Country", "name": "台灣"},
+      "description": "60 分鐘深度對談，幫你把職涯困境說清楚、看清楚，諮詢後 24 小時內書面摘要。",
+      "offers": {"@type": "Offer", "price": "1500", "priceCurrency": "TWD", "availability": "https://schema.org/InStock"}
+    },
+    {
+      "@type": "Service",
+      "name": "職場轉型諮詢",
+      "serviceType": "轉職輔導",
+      "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
+      "areaServed": {"@type": "Country", "name": "台灣"},
+      "description": "90 分鐘深度策略諮詢，職能轉譯矩陣分析＋職涯敘事重構建議＋完整書面策略報告。",
+      "offers": {"@type": "Offer", "price": "2000", "priceCurrency": "TWD", "availability": "https://schema.org/InStock"}
+    },
+    {
+      "@type": "Service",
+      "name": "職涯陪跑方案",
+      "serviceType": "職涯輔導",
+      "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
+      "areaServed": {"@type": "Country", "name": "台灣"},
+      "description": "每月 4 次諮詢，涵蓋方向確認、履歷重寫、面試練習、offer 談判全程支援。",
+      "offers": {"@type": "Offer", "price": "6000", "priceCurrency": "TWD", "availability": "https://schema.org/InStock"}
+    },
+    {
+      "@type": "Service",
+      "name": "履歷健檢與面試輔導",
+      "serviceType": "履歷健檢",
+      "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
+      "areaServed": {"@type": "Country", "name": "台灣"},
+      "description": "用招募方視角找出真正卡關點，諮詢前預先診斷履歷。",
+      "offers": {"@type": "Offer", "price": "1200", "priceCurrency": "TWD", "availability": "https://schema.org/InStock"}
+    },
+    {
+      "@type": "Service",
+      "name": "模擬面試",
+      "serviceType": "模擬面試",
+      "provider": {"@type": "Person", "name": "蒲朝棟 Tim"},
+      "areaServed": {"@type": "Country", "name": "台灣"},
+      "description": "高強度模擬＋即時反饋，針對目標職位設計題組，找出真實盲點。",
+      "offers": {"@type": "Offer", "price": "1200", "priceCurrency": "TWD", "availability": "https://schema.org/InStock"}
+    }
+  ]
+}
 </script>
 </head>
 <body>
@@ -878,7 +914,7 @@
   <div class="hero-right">
     <picture>
       <source srcset="photo.webp" type="image/webp">
-      <img src="photo.jpg" alt="蒲朝棟 Tim" class="hero-photo">
+      <img src="photo.jpg" alt="蒲朝棟 Tim，CDA認證職涯引導師" class="hero-photo" width="1107" height="864" loading="eager" decoding="async">
     </picture>
     <div class="hero-grid"></div>
     <div class="hero-circle"></div>
@@ -980,7 +1016,7 @@
     </div>
     <div class="about-right reveal">
       <span class="section-label">關於我</span>
-      <h2 class="section-title section-title--mb32">我做的事，<br>是幫你把能力<em>說清楚</em>。</h2>
+      <h2 class="section-title section-title--mb32">職涯顧問蒲朝棟 Tim，<br>幫你把能力<em>說清楚</em>。</h2>
 
       <p class="about-p">
         我的職涯走過三個截然不同的階段。
@@ -1100,7 +1136,7 @@
 <section id="services">
   <div class="services-inner">
     <span class="section-label reveal">服務與定價</span>
-    <h2 class="section-title reveal">你可以這樣找我。</h2>
+    <h2 class="section-title reveal">職涯諮詢服務，<br>你可以這樣找我。</h2>
 
     <!-- Main 3 services -->
     <div class="services-grid reveal">
@@ -1350,7 +1386,7 @@
 <section id="faq">
   <div class="faq-inner">
     <span class="section-label reveal">常見問題</span>
-    <h2 class="section-title reveal">預約前，<br>你可能想知道這些。</h2>
+    <h2 class="section-title reveal">職涯諮詢常見問題，<br>預約前你可能想知道這些。</h2>
 
     <div class="faq-list-wrap reveal" id="faqList">
       <div class="faq-item">
