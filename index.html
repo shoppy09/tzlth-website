@@ -203,7 +203,6 @@
     margin-bottom: 24px;
     border-left: 2px solid var(--accent); padding-left: 24px;
   }
-  .hero-quote-attr { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: rgba(245,240,232,.35); }
 
   /* ── ANCHOR SCROLL OFFSET (fixed nav compensation) ── */
   section[id] { scroll-margin-top: 84px; }
@@ -561,7 +560,6 @@
     .services-row2 { grid-template-columns:1fr; }
     .method-grid { grid-template-columns:1fr; }
     #pain, #about, #cases, #services, #testimonials, #process, #method, #faq, #cta { padding:80px 24px; }
-    #process .process-arrow { transform: rotate(90deg); }
     footer { flex-direction:column; gap:24px; text-align:center; padding:40px 24px; }
     .footer-links { flex-wrap:wrap; justify-content:center; }
     .pain-footer { flex-direction:column; gap:24px; }
@@ -608,6 +606,25 @@
   }
   #backToTop.visible { opacity: 1; pointer-events: auto; }
   #backToTop:hover { background: var(--accent); transform: translateY(-2px); }
+
+  /* ── TAP DELAY FIX ── */
+  a, button, [role="button"] { touch-action: manipulation; }
+
+  /* ── STAGGERED CARD REVEAL ── */
+  .cases-grid .case-card:nth-child(2)       { transition-delay: .08s; }
+  .cases-grid .case-card:nth-child(3)       { transition-delay: .16s; }
+  .cases-grid .case-card:nth-child(4)       { transition-delay: .24s; }
+  .cases-grid .case-card:nth-child(5)       { transition-delay: .32s; }
+  .cases-grid .case-card:nth-child(6)       { transition-delay: .40s; }
+  .services-grid .service-card:nth-child(2) { transition-delay: .12s; }
+  .services-grid .service-card:nth-child(3) { transition-delay: .24s; }
+  .method-grid .method-card:nth-child(2)    { transition-delay: .08s; }
+  .method-grid .method-card:nth-child(3)    { transition-delay: .16s; }
+  .method-grid .method-card:nth-child(4)    { transition-delay: .24s; }
+  .method-grid .method-card:nth-child(5)    { transition-delay: .32s; }
+  .method-grid .method-card:nth-child(6)    { transition-delay: .40s; }
+  .testimonials-grid .testimonial-card:nth-child(2) { transition-delay: .12s; }
+  .testimonials-grid .testimonial-card:nth-child(3) { transition-delay: .24s; }
 
   /* ── FOCUS / ACCESSIBILITY ── */
   :focus-visible {
@@ -685,7 +702,7 @@
   /* ── FAQ SECTION ── */
   #faq { padding: 120px 60px; background: var(--cream); }
   .faq-inner { max-width: 800px; margin: 0 auto; }
-  .faq-list-wrap { margin-top: 64px; }
+  .faq-list-wrap { margin-top: 64px; list-style: none; }
   .faq-contact-box { margin-top: 40px; text-align: center; padding: 32px; background: var(--white); border: 1px solid var(--border); }
   .faq-contact-text { font-size: 15px; font-weight: 300; color: var(--charcoal-soft); margin-bottom: 20px; }
   @media (max-width: 768px) { #faq { padding: 80px 24px; } }
@@ -753,6 +770,8 @@
   .ai-output-tag--green { background: rgba(124,184,122,.15); color: #7CB87A; }
   .ai-output-tag--amber { background: rgba(232,168,130,.12); color: var(--accent-light); }
   .ai-output-tag--red { background: rgba(220,80,80,.12); color: #E07070; }
+  .ai-output-warn { color: rgba(224,112,112,.8); }
+  .ai-demo-hint { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,240,232,.25); margin-bottom: 12px; }
   .ai-tool-note { text-align: center; margin-top: 32px; font-size: 13px; font-weight: 300; color: var(--muted); }
   .ai-tool-note-link { color: var(--accent); text-decoration: none; }
   .ai-tool-note-link:hover { text-decoration: underline; }
@@ -1160,9 +1179,9 @@
   <div class="cases-inner">
     <span class="section-label reveal">真實個案</span>
     <h2 class="section-title reveal">真實的人，真實的卡關，<br>真實的改變。</h2>
-    <div class="cases-grid reveal">
+    <div class="cases-grid">
 
-      <div class="case-card">
+      <div class="case-card reveal">
         <span class="case-tag">職場轉型・法律 → 企業法務</span>
         <h3 class="case-title">投了 30 間沒聲音的律師</h3>
         <p class="case-before">真正的問題：</p>
@@ -1171,7 +1190,7 @@
         <span class="case-bg-num">01</span>
       </div>
 
-      <div class="case-card">
+      <div class="case-card reveal">
         <span class="case-tag">履歷重寫・學術 → 科技業</span>
         <h3 class="case-title">物理碩士，寫了「學習歷程」四個字</h3>
         <p class="case-before">真正的問題：</p>
@@ -1180,7 +1199,7 @@
         <span class="case-bg-num">02</span>
       </div>
 
-      <div class="case-card">
+      <div class="case-card reveal">
         <span class="case-tag">職涯策略・醫療 → 科技業務</span>
         <h3 class="case-title">運動醫學系，以為自己只能當教練</h3>
         <p class="case-before">真正的問題：</p>
@@ -1189,7 +1208,7 @@
         <span class="case-bg-num">03</span>
       </div>
 
-      <div class="case-card">
+      <div class="case-card reveal">
         <span class="case-tag">敘事重構・空白期處理</span>
         <h3 class="case-title">菲律賓回來，被說「積極度不足」</h3>
         <p class="case-before">真正的問題：</p>
@@ -1198,7 +1217,7 @@
         <span class="case-bg-num">04</span>
       </div>
 
-      <div class="case-card">
+      <div class="case-card reveal">
         <span class="case-tag">職涯轉型・軍職 → 金融業</span>
         <h3 class="case-title">士官提早退伍，想進銀行客服</h3>
         <p class="case-before">真正的問題：</p>
@@ -1207,7 +1226,7 @@
         <span class="case-bg-num">05</span>
       </div>
 
-      <div class="case-card">
+      <div class="case-card reveal">
         <span class="case-tag">心態障礙・完美主義癱瘓</span>
         <h3 class="case-title">被辭退的律師，問題根本不是履歷</h3>
         <p class="case-before">真正的問題：</p>
@@ -1227,9 +1246,9 @@
     <h2 class="section-title reveal">職涯諮詢服務，<br>你可以這樣找我。</h2>
 
     <!-- Main 3 services -->
-    <div class="services-grid reveal">
+    <div class="services-grid">
 
-      <div class="service-card">
+      <div class="service-card reveal">
         <p class="service-code">01</p>
         <h3 class="service-name">職涯諮詢<br>（一對一）</h3>
         <p class="service-desc">適合：感覺卡住但說不清楚卡在哪，或需要外部視角確認方向的人。</p>
@@ -1247,7 +1266,7 @@
         <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service" rel="noopener noreferrer">預約這個方案</a>
       </div>
 
-      <div class="service-card featured">
+      <div class="service-card featured reveal">
         <div class="service-badge">最多人選擇</div>
         <p class="service-code">02</p>
         <h3 class="service-name">職場轉型<br>諮詢</h3>
@@ -1266,7 +1285,7 @@
         <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service" rel="noopener noreferrer">預約這個方案</a>
       </div>
 
-      <div class="service-card">
+      <div class="service-card reveal">
         <p class="service-code">03</p>
         <h3 class="service-name">職涯陪跑<br>方案</h3>
         <p class="service-desc">適合：需要從頭到尾完整支援——方向確認、履歷重寫、面試練習、offer 談判。</p>
@@ -1320,38 +1339,38 @@
   <div class="method-inner">
     <span class="section-label reveal">顧問方法</span>
     <h2 class="section-title reveal">我用的六個框架，<br>都來自真實個案的歸納。</h2>
-    <div class="method-grid reveal">
-      <div class="method-card">
+    <div class="method-grid">
+      <div class="method-card reveal">
         <p class="method-num">01</p>
         <p class="method-en">Psychological Triage</p>
         <h3 class="method-name">心理障礙前置診斷</h3>
         <p class="method-desc">在給任何技術建議之前，先診斷並解除客戶的心理阻礙。技術方法再好，心理層面沒處理，諮詢結束後你還是不會動。</p>
       </div>
-      <div class="method-card">
+      <div class="method-card reveal">
         <p class="method-num">02</p>
         <p class="method-en">Skill Translation Matrix</p>
         <h3 class="method-name">職能轉譯矩陣</h3>
         <p class="method-desc">將你在舊產業的底層能力，翻譯成目標產業能理解且在意的語言。不是說你做了什麼，而是說你能解決什麼問題。</p>
       </div>
-      <div class="method-card">
+      <div class="method-card reveal">
         <p class="method-num">03</p>
         <p class="method-en">STAR Deep Reconstruction</p>
         <h3 class="method-name">STAR 深度重構法</h3>
         <p class="method-desc">用可驗證的行為事例取代主觀形容詞，讓履歷的每一條經歷都能在 10 秒內讓人看懂你帶來過什麼價值。</p>
       </div>
-      <div class="method-card">
+      <div class="method-card reveal">
         <p class="method-num">04</p>
         <p class="method-en">Narrative Reframing</p>
         <h3 class="method-name">職涯敘事重構法</h3>
         <p class="method-desc">將不利的職涯事實（空白期、被辭退、提早退伍），轉換為有主導感的真實敘事。不是造假，是找到同一件事對雇主有利的角度。</p>
       </div>
-      <div class="method-card">
+      <div class="method-card reveal">
         <p class="method-num">05</p>
         <p class="method-en">Revenue-Back Positioning</p>
         <h3 class="method-name">財務逆推職涯定位</h3>
         <p class="method-desc">用你的目標收入逆推職涯路徑的商業結構可行性。搞清楚哪條路走得通，才叫真的在規劃，不是在飄。</p>
       </div>
-      <div class="method-card">
+      <div class="method-card reveal">
         <p class="method-num">06</p>
         <p class="method-en">Multi-Path Career Blueprint</p>
         <h3 class="method-name">多路徑策略藍圖</h3>
@@ -1367,9 +1386,9 @@
     <span class="section-label testimonials-label reveal">學員真實回饋</span>
     <h2 class="section-title testimonials-title reveal">他們說的，<br>比我說的更有說服力。</h2>
 
-    <div class="testimonials-grid reveal">
+    <div class="testimonials-grid">
 
-      <article class="testimonial-card">
+      <article class="testimonial-card reveal">
         <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">老師在過程中很用心地聽我的想法，也會指出細節問題，例如哪些地方前後矛盾、哪些能力需要和目標企業的職位做連結。我能感覺到老師沒有敷衍，反而非常耐心，在我卡住時也會等我把想法整理好。</p>
@@ -1382,7 +1401,7 @@
         </div>
       </article>
 
-      <article class="testimonial-card">
+      <article class="testimonial-card reveal">
         <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">非常感謝蒲朝棟老師給予的指導及建議，解惑我對履歷投遞設定的相關問題，亦精準又具體地提供修改方向和實例，告訴我們什麼內容可以多加以補充說明、提點撰寫時可以加進去的業界指標。獲益良多！</p>
@@ -1395,7 +1414,7 @@
         </div>
       </article>
 
-      <article class="testimonial-card">
+      <article class="testimonial-card reveal">
         <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">很感謝朝棟老師給我很有用的建議，尤其是自傳的部分，我當時候不知道怎麼撰寫，我會認為工作經歷已經寫過不應該重複，但是老師給了我很具體的意見，讓我一下就了解了。</p>
@@ -1563,6 +1582,7 @@
         </a>
       </div>
       <div class="ai-tool-card-right">
+        <p class="ai-demo-hint">以下為範例輸出</p>
         <div class="ai-output-demo">
           <p class="ai-output-label">AI 診斷總評</p>
           <div class="ai-output-score">
@@ -1577,7 +1597,7 @@
         </div>
         <div class="ai-output-demo">
           <p class="ai-output-label">履歷紅旗警示</p>
-          <p class="ai-output-summary" style="color:rgba(224,112,112,.8);">自 2024/06 離職至今已空窗 10 個月，履歷中未主動說明原因，建議在專業總結中補充空窗背景。</p>
+          <p class="ai-output-summary ai-output-warn">自 2024/06 離職至今已空窗 10 個月，履歷中未主動說明原因，建議在專業總結中補充空窗背景。</p>
         </div>
         <div class="ai-output-demo">
           <p class="ai-output-label">跨界可轉移技能</p>
