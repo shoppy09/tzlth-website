@@ -91,18 +91,18 @@
   .nav-links a:hover { color: var(--accent); }
   .nav-line {
     border: 1px solid var(--accent);
-    color: var(--accent) !important;
+    color: var(--accent);
     padding: 10px 18px; border-radius: 2px;
-    transition: background .2s !important;
+    transition: background .2s;
   }
-  .nav-line:hover { background: var(--accent) !important; color: var(--white) !important; }
+  .nav-line:hover { background: var(--accent); color: var(--white); }
   .nav-cta {
     background: var(--charcoal);
-    color: var(--cream) !important;
+    color: var(--cream);
     padding: 10px 22px; border-radius: 2px;
-    transition: background .2s !important;
+    transition: background .2s;
   }
-  .nav-cta:hover { background: var(--accent) !important; }
+  .nav-cta:hover { background: var(--accent); }
 
   /* ── HERO ── */
   #hero {
@@ -172,13 +172,15 @@
     object-fit: cover; object-position: center top;
     opacity: .72;
   }
-  .hero-grid {
+  .dot-grid {
     position: absolute; inset: 0;
     background-image:
       linear-gradient(rgba(245,240,232,.03) 1px, transparent 1px),
       linear-gradient(90deg, rgba(245,240,232,.03) 1px, transparent 1px);
     background-size: 60px 60px;
+    pointer-events: none;
   }
+  .hero-grid { background-size: 60px 60px; }
   .hero-circle {
     position: absolute; top: 60px; right: 60px;
     width: 180px; height: 180px;
@@ -262,14 +264,7 @@
     background: var(--charcoal); color: var(--cream);
     width: 100%; position: relative; overflow: hidden;
   }
-  .cred-card-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(245,240,232,.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(245,240,232,.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-  }
+  .cred-card-grid { background-size: 40px 40px; }
   .cred-inner { position: relative; padding: 44px 40px; }
   .cred-header { margin-bottom: 36px; padding-bottom: 28px; border-bottom: 1px solid rgba(245,240,232,.1); }
   .cred-name {
@@ -319,8 +314,6 @@
     border: 1px solid rgba(196,98,45,.4); color: var(--accent-light);
     padding: 5px 14px; border-radius: 2px;
   }
-
-  .about-right {}
   .about-p {
     font-size: 16px; font-weight: 300; color: var(--charcoal-soft);
     line-height: 1.9; margin-bottom: 24px;
@@ -565,7 +558,7 @@
   }
 
   /* ── NAV ACTIVE STATE ── */
-  .nav-links a.active { color: var(--accent) !important; }
+  .nav-links a.active { color: var(--accent); }
 
   /* ── FAQ ACCORDION ── */
   .faq-item { border-bottom: 1px solid var(--border); }
@@ -709,7 +702,6 @@
     gap: 64px;
     align-items: center;
   }
-  .ai-tool-card-left {}
   .ai-tool-card-tag { font-size: 11px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 18px; }
   .ai-tool-card-title { font-family: 'Playfair Display', serif; font-size: clamp(22px,2.4vw,30px); font-weight: 600; color: var(--cream); line-height: 1.35; margin-bottom: 16px; }
   .ai-tool-card-desc { font-size: 14px; font-weight: 300; color: rgba(245,240,232,.55); line-height: 1.8; margin-bottom: 32px; }
@@ -999,9 +991,9 @@
   <div class="hero-right">
     <picture>
       <source srcset="photo.webp" type="image/webp">
-      <img src="photo.jpg" alt="蒲朝棟 Tim，CDA認證職涯引導師" class="hero-photo" width="1107" height="864" loading="eager" decoding="async">
+      <img src="photo.jpg" alt="蒲朝棟 Tim，CDA認證職涯引導師" class="hero-photo" width="1107" height="864" loading="eager" decoding="async" sizes="(max-width:768px) 100vw, 50vw">
     </picture>
-    <div class="hero-grid"></div>
+    <div class="dot-grid hero-grid"></div>
     <div class="hero-circle"></div>
     <div class="hero-right-inner">
       <p class="hero-quote">
@@ -1058,7 +1050,7 @@
   <div class="about-inner">
     <div class="about-left reveal">
       <div class="cred-card">
-        <div class="cred-card-grid"></div>
+        <div class="dot-grid cred-card-grid"></div>
         <div class="cred-inner">
           <div class="cred-header">
             <p class="cred-name">蒲朝棟 Tim</p>
@@ -1363,7 +1355,7 @@
 
     <div class="testimonials-grid reveal">
 
-      <div class="testimonial-card">
+      <article class="testimonial-card">
         <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">老師在過程中很用心地聽我的想法，也會指出細節問題，例如哪些地方前後矛盾、哪些能力需要和目標企業的職位做連結。我能感覺到老師沒有敷衍，反而非常耐心，在我卡住時也會等我把想法整理好。</p>
@@ -1376,7 +1368,7 @@
         </div>
       </div>
 
-      <div class="testimonial-card">
+      <article class="testimonial-card">
         <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">非常感謝蒲朝棟老師給予的指導及建議，解惑我對履歷投遞設定的相關問題，亦精準又具體地提供修改方向和實例，告訴我們什麼內容可以多加以補充說明、提點撰寫時可以加進去的業界指標。獲益良多！</p>
@@ -1389,7 +1381,7 @@
         </div>
       </div>
 
-      <div class="testimonial-card">
+      <article class="testimonial-card">
         <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">很感謝朝棟老師給我很有用的建議，尤其是自傳的部分，我當時候不知道怎麼撰寫，我會認為工作經歷已經寫過不應該重複，但是老師給了我很具體的意見，讓我一下就了解了。</p>
@@ -1473,51 +1465,52 @@
     <span class="section-label reveal">常見問題</span>
     <h2 class="section-title reveal">職涯諮詢常見問題，<br>預約前你可能想知道這些。</h2>
 
-    <div class="faq-list-wrap reveal" id="faqList">
-      <div class="faq-item">
+    <ul class="faq-list-wrap reveal" id="faqList" role="list">
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           諮詢是用什麼方式進行？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">線上視訊（Google Meet / Zoom）或面談皆可，依你的需求和地點安排。</div>
-      </div>
-      <div class="faq-item">
+        <div class="faq-answer">線上視訊（Google Meet / Zoom）或面談皆可，依你的需求和地點安排。</li>
+</div>
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           我適合找你諮詢嗎？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">如果你有 3 年以上工作經驗、感覺卡住但說不清楚問題在哪，或正在評估轉職、希望有外部視角協助，你就適合。社會新鮮人建議先透過 LINE 說明狀況，我會評估是否合適。</div>
-      </div>
-      <div class="faq-item">
+        <div class="faq-answer">如果你有 3 年以上工作經驗、感覺卡住但說不清楚問題在哪，或正在評估轉職、希望有外部視角協助，你就適合。社會新鮮人建議先透過 LINE 說明狀況，我會評估是否合適。</li>
+</div>
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           付款方式有哪些？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">確認諮詢時間後，提供銀行轉帳或其他方式，完成付款後即確認預約。</div>
-      </div>
-      <div class="faq-item">
+        <div class="faq-answer">確認諮詢時間後，提供銀行轉帳或其他方式，完成付款後即確認預約。</li>
+</div>
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           預約後多快能排到？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">通常 3–7 個工作天內可以安排，視當週排程而定。如有急迫需求請於 LINE 說明。</div>
-      </div>
-      <div class="faq-item">
+        <div class="faq-answer">通常 3–7 個工作天內可以安排，視當週排程而定。如有急迫需求請於 LINE 說明。</li>
+</div>
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           諮詢內容會保密嗎？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">會。你的基本資料與諮詢內容受諮詢同意書保護，不對外揭露。</div>
-      </div>
-      <div class="faq-item">
+        <div class="faq-answer">會。你的基本資料與諮詢內容受諮詢同意書保護，不對外揭露。</li>
+</div>
+      <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           不確定要選哪個方案？
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">先加 LINE 說說你的狀況，我會建議最適合你的方案，不需要自己判斷。</div>
-      </div>
-    </div>
+      </li>
+</div>
 
+</ul>
     <div class="faq-contact-box">
       <p class="faq-contact-text">還有其他問題？直接加 LINE 問我，通常當天回覆。</p>
       <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary" rel="noopener noreferrer">加入 LINE 官方帳號</a>
@@ -1552,7 +1545,7 @@
           <li>您的資料不儲存・安全加密傳輸</li>
         </ul>
         <a href="https://resume-diagnosis.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-ai-tool">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           立即免費診斷履歷
         </a>
       </div>
@@ -1672,10 +1665,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 
-  // Scroll reveal
+  // Scroll reveal + count-up (shared IO support check)
   var reveals = document.querySelectorAll(".reveal");
+  var countEls = document.querySelectorAll(".stat-num[data-count]");
   if (!("IntersectionObserver" in window)) {
     reveals.forEach(function(el) { el.classList.add("visible"); });
+    countEls.forEach(function(el) { animateCount(el); });
   } else {
     var obs = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
@@ -1686,6 +1681,17 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }, { threshold: 0.05, rootMargin: "0px 0px 50px 0px" });
     reveals.forEach(function(el) { obs.observe(el); });
+    if (countEls.length) {
+      var countObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            countObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      countEls.forEach(function(el) { countObs.observe(el); });
+    }
   }
 
   // Nav active state on scroll
@@ -1749,31 +1755,20 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     requestAnimationFrame(step);
   }
-  var countEls = document.querySelectorAll(".stat-num[data-count]");
-  if ("IntersectionObserver" in window && countEls.length) {
-    var countObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          countObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    countEls.forEach(function(el) { countObs.observe(el); });
-  }
-
   // GA click event tracking for CTA buttons
   document.querySelectorAll("a[href*='booking'], a[href*='lin.ee']").forEach(function(a) {
     a.addEventListener("click", function() {
-      if (typeof gtag === "function") {
-        var label = a.textContent.trim().substring(0, 40);
-        var category = a.href.includes("lin.ee") ? "line" : "booking";
-        gtag("event", "cta_click", {
-          event_category: category,
-          event_label: label,
-          value: 1
-        });
-      }
+      try {
+        if (typeof gtag === "function") {
+          var label = a.textContent.trim().substring(0, 40);
+          var category = a.href.includes("lin.ee") ? "line" : "booking";
+          gtag("event", "cta_click", {
+            event_category: category,
+            event_label: label,
+            value: 1
+          });
+        }
+      } catch (e) {}
     });
   });
 
@@ -1826,7 +1821,7 @@ document.addEventListener("DOMContentLoaded", function() {
         clearInterval(pollInterval);
         overlay.classList.remove("active");
         if (win && !win.closed) { win.location.href = url; }
-        else { window.open(url, "_blank", "noopener,noreferrer"); }
+        else { window.location.href = url; } // fallback: same-window if popup blocked
       }
 
       // Poll every 2.5s using Image ping
@@ -1835,6 +1830,7 @@ document.addEventListener("DOMContentLoaded", function() {
           clearInterval(pollInterval);
           overlay.classList.remove("active");
           if (win && !win.closed) { win.location.href = url; }
+          else { window.location.href = url; }
           return;
         }
         var img = new Image();
