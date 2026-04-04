@@ -674,6 +674,76 @@
   .faq-contact-text { font-size: 15px; font-weight: 300; color: var(--charcoal-soft); margin-bottom: 20px; }
   @media (max-width: 768px) { #faq { padding: 80px 24px; } }
 
+  /* ── AI TOOL ── */
+  #ai-tool { padding: 120px 60px; background: var(--cream); border-top: 1px solid var(--border); }
+  .ai-tool-inner { max-width: 900px; margin: 0 auto; }
+  .ai-tool-header { text-align: center; margin-bottom: 56px; }
+  .ai-tool-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--charcoal); color: var(--accent-light);
+    font-size: 11px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase;
+    padding: 7px 16px; border-radius: 2px; margin-bottom: 24px;
+  }
+  .ai-tool-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); flex-shrink: 0; animation: pulse 2.8s ease-in-out infinite; }
+  .ai-tool-title { font-family: 'Playfair Display', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 600; line-height: 1.3; margin-bottom: 18px; }
+  .ai-tool-sub { font-size: 16px; font-weight: 300; color: var(--charcoal-soft); line-height: 1.8; max-width: 560px; margin: 0 auto; }
+  .ai-tool-card {
+    background: var(--charcoal);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 4px;
+    padding: 56px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .ai-tool-card-left {}
+  .ai-tool-card-tag { font-size: 11px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 18px; }
+  .ai-tool-card-title { font-family: 'Playfair Display', serif; font-size: clamp(22px,2.4vw,30px); font-weight: 600; color: var(--cream); line-height: 1.35; margin-bottom: 16px; }
+  .ai-tool-card-desc { font-size: 14px; font-weight: 300; color: rgba(245,240,232,.55); line-height: 1.8; margin-bottom: 32px; }
+  .ai-tool-features { list-style: none; margin-bottom: 40px; }
+  .ai-tool-features li {
+    font-size: 13px; font-weight: 300; color: rgba(245,240,232,.75);
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,.07);
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  .ai-tool-features li::before { content: '—'; color: var(--accent); flex-shrink: 0; }
+  .btn-ai-tool {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent); color: var(--white);
+    font-size: 14px; font-weight: 400; letter-spacing: .04em;
+    padding: 15px 32px; border-radius: 2px;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+  }
+  .btn-ai-tool:hover { background: var(--accent-light); color: var(--charcoal); transform: translateY(-1px); }
+  .btn-ai-tool svg { width: 16px; height: 16px; }
+  .ai-tool-card-right { display: flex; flex-direction: column; gap: 16px; }
+  .ai-output-demo {
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 3px; padding: 20px 24px;
+  }
+  .ai-output-label { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 10px; opacity: .7; }
+  .ai-output-score { display: flex; align-items: baseline; gap: 6px; margin-bottom: 10px; }
+  .ai-output-score-num { font-family: 'Playfair Display', serif; font-size: 42px; font-weight: 600; color: #7CB87A; line-height: 1; }
+  .ai-output-score-max { font-size: 14px; color: rgba(245,240,232,.3); }
+  .ai-output-bar { height: 3px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; margin-bottom: 12px; }
+  .ai-output-bar-fill { height: 100%; width: 78%; background: #7CB87A; border-radius: 2px; }
+  .ai-output-summary { font-size: 12px; font-weight: 300; color: rgba(245,240,232,.45); line-height: 1.7; }
+  .ai-output-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .ai-output-tag {
+    font-size: 10px; font-weight: 400; letter-spacing: .08em;
+    padding: 4px 10px; border-radius: 2px; text-transform: uppercase;
+  }
+  .ai-output-tag--green { background: rgba(124,184,122,.15); color: #7CB87A; }
+  .ai-output-tag--amber { background: rgba(232,168,130,.12); color: var(--accent-light); }
+  .ai-output-tag--red { background: rgba(220,80,80,.12); color: #E07070; }
+  .ai-tool-note { text-align: center; margin-top: 32px; font-size: 13px; font-weight: 300; color: var(--muted); }
+  @media (max-width: 900px) {
+    .ai-tool-card { grid-template-columns: 1fr; gap: 40px; padding: 40px 32px; }
+    #ai-tool { padding: 80px 24px; }
+  }
+
   /* ── LEAD CAPTURE ── */
   #lead { padding: 100px 60px; background: var(--white); }
   .lead-inner { max-width: 780px; margin: 0 auto; text-align: center; }
@@ -869,6 +939,7 @@
     <li><a href="#services">服務與定價</a></li>
     <li><a href="#testimonials">學員回饋</a></li>
     <li><a href="#faq">常見問題</a></li>
+    <li><a href="#ai-tool">AI 履歷診斷</a></li>
     <li><a href="https://lin.ee/IOX6V66" target="_blank" class="nav-line" rel="noopener noreferrer">LINE 聯絡</a></li>
     <li><a href="https://my-booking-system.onrender.com/" target="_blank" class="nav-cta" rel="noopener noreferrer">預約諮詢</a></li>
   </ul>
@@ -1437,6 +1508,64 @@
       <p class="faq-contact-text">還有其他問題？直接加 LINE 問我，通常當天回覆。</p>
       <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary" rel="noopener noreferrer">加入 LINE 官方帳號</a>
     </div>
+  </div>
+</section>
+
+
+<!-- AI TOOL -->
+<section id="ai-tool">
+  <div class="ai-tool-inner">
+    <div class="ai-tool-header reveal">
+      <div class="ai-tool-badge">免費工具</div>
+      <h2 class="ai-tool-title">先讓 AI 告訴你，<br>你的履歷卡在哪。</h2>
+      <p class="ai-tool-sub">
+        諮詢前不知道從哪裡開始？先上傳履歷，30 秒拿到 ATS 評分與具體診斷，帶著報告來找我效率更高。
+      </p>
+    </div>
+    <div class="ai-tool-card reveal">
+      <div class="ai-tool-card-left">
+        <p class="ai-tool-card-tag">Gemini AI 驅動 · 完全免費</p>
+        <h3 class="ai-tool-card-title">AI 履歷診斷<br>30 秒，找出真正的卡關點</h3>
+        <p class="ai-tool-card-desc">
+          上傳你的履歷 PDF，AI 以資深 HR 視角即時診斷：ATS 相容性、履歷紅旗、跨界可轉移技能、
+          具體改寫建議。不只說「哪裡不好」，還告訴你為什麼。
+        </p>
+        <ul class="ai-tool-features">
+          <li>ATS 友善度評分（0–100）</li>
+          <li>履歷紅旗自動偵測（未填寫佔位符、空窗期、數字矛盾）</li>
+          <li>跨產業可轉移技能萃取</li>
+          <li>黃金三角結構改寫建議</li>
+          <li>您的資料不儲存・安全加密傳輸</li>
+        </ul>
+        <a href="https://resume-diagnosis.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn-ai-tool">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          立即免費診斷履歷
+        </a>
+      </div>
+      <div class="ai-tool-card-right">
+        <div class="ai-output-demo">
+          <p class="ai-output-label">AI 診斷總評</p>
+          <div class="ai-output-score">
+            <span class="ai-output-score-num">78</span>
+            <span class="ai-output-score-max">/ 100</span>
+          </div>
+          <div class="ai-output-bar"><div class="ai-output-bar-fill"></div></div>
+          <p class="ai-output-summary">履歷具備紮實的工作年資與量化成果，關鍵字覆蓋率良好。然而缺乏專業總結段落，且部分經歷的職責主體描述過於被動，影響競爭力。</p>
+          <div class="ai-output-tags">
+            <span class="ai-output-tag ai-output-tag--green">良好表現</span>
+          </div>
+        </div>
+        <div class="ai-output-demo">
+          <p class="ai-output-label">履歷紅旗警示</p>
+          <p class="ai-output-summary" style="color:rgba(224,112,112,.8);">自 2024/06 離職至今已空窗 10 個月，履歷中未主動說明原因，建議在專業總結中補充空窗背景。</p>
+        </div>
+        <div class="ai-output-demo">
+          <p class="ai-output-label">跨界可轉移技能</p>
+          <p class="ai-output-summary">跨部門溝通與利害關係人管理：依據「協調生產、設備、品質、研發四個跨部門單位」的經歷，顯示其具備整合不同立場資源的能力。</p>
+        </div>
+      </div>
+    </div>
+    <p class="ai-tool-note reveal">AI 診斷是第一步。如果報告讓你看見問題、卻不確定怎麼解——<a href="https://my-booking-system.onrender.com/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">帶著報告來諮詢</a>，我們一起拆解。</p>
   </div>
 </section>
 
