@@ -624,6 +624,18 @@
   .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease,transform .7s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
 
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: .01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: .01ms !important;
+    }
+    .reveal { opacity: 1; transform: none; }
+    .reveal.visible { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
   /* ── TESTIMONIALS ── */
   #testimonials { padding: 120px 60px; background: var(--charcoal); }
   .testimonials-inner { max-width: 1100px; margin: 0 auto; }
@@ -739,6 +751,8 @@
   .ai-output-tag--amber { background: rgba(232,168,130,.12); color: var(--accent-light); }
   .ai-output-tag--red { background: rgba(220,80,80,.12); color: #E07070; }
   .ai-tool-note { text-align: center; margin-top: 32px; font-size: 13px; font-weight: 300; color: var(--muted); }
+  .ai-tool-note-link { color: var(--accent); text-decoration: none; }
+  .ai-tool-note-link:hover { text-decoration: underline; }
   @media (max-width: 900px) {
     .ai-tool-card { grid-template-columns: 1fr; gap: 40px; padding: 40px 32px; }
     #ai-tool { padding: 80px 24px; }
@@ -932,7 +946,7 @@
 
 <!-- NAV -->
 <nav aria-label="主要導覽">
-  <a href="#" class="nav-logo">職涯<span>停看聽</span></a>
+  <a href="/" class="nav-logo">職涯<span>停看聽</span></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">關於我</a></li>
     <li><a href="#cases">客戶案例</a></li>
@@ -1565,7 +1579,7 @@
         </div>
       </div>
     </div>
-    <p class="ai-tool-note reveal">AI 診斷是第一步。如果報告讓你看見問題、卻不確定怎麼解——<a href="https://my-booking-system.onrender.com/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">帶著報告來諮詢</a>，我們一起拆解。</p>
+    <p class="ai-tool-note reveal">AI 診斷是第一步。如果報告讓你看見問題、卻不確定怎麼解——<a href="https://my-booking-system.onrender.com/" target="_blank" rel="noopener noreferrer" class="ai-tool-note-link">帶著報告來諮詢</a>，我們一起拆解。</p>
   </div>
 </section>
 
@@ -1632,12 +1646,12 @@
     <li><a href="https://www.threads.com/@cda_pu_positive_thinking" target="_blank" rel="noopener noreferrer">Threads</a></li>
     <li><a href="https://www.instagram.com/cda_pu_positive_thinking/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
     <li><a href="https://lin.ee/IOX6V66" target="_blank" rel="noopener noreferrer">LINE 官方帳號</a></li>
-    <li><a href="/cdn-cgi/l/email-protection#f182999e818188c1c8b1969c90989ddf929e9c">Email</a></li>
+    <li><a href="mailto:shoppy09&#64;gmail.com">Email</a></li>
   </ul>
   <p class="footer-copy">© 2026 職涯停看聽</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 document.addEventListener("DOMContentLoaded", function() {
   // Hamburger menu toggle
   var btn = document.getElementById("hamburgerBtn");
@@ -1765,18 +1779,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // ── BOOKING SYSTEM WAKE-UP ──
   var BOOKING_URL = "https://my-booking-system.onrender.com/";
+  var BOOKING_PING = BOOKING_URL + "favicon.ico";
   var bookingReady = false;
   var overlay = document.getElementById("bookingOverlay");
 
-  // Silent pre-warm ping on page load
-  function pingBooking() {
-    fetch(BOOKING_URL, { mode: "no-cors", cache: "no-store" })
-      .then(function() { bookingReady = true; })
-      .catch(function() {});
+  // Use Image ping — resolves only on real HTTP 200, unlike no-cors fetch
+  function pingBooking(onSuccess) {
+    var img = new Image();
+    img.onload = function() {
+      bookingReady = true;
+      if (onSuccess) onSuccess();
+    };
+    img.onerror = function() {
+      // onerror fires for CORS errors too (image loaded but blocked)
+      // We treat it as "server responded" since sleep returns no response at all
+      bookingReady = true;
+      if (onSuccess) onSuccess();
+    };
+    // Add timestamp to bypass cache
+    img.src = BOOKING_PING + "?t=" + Date.now();
+    // If no response within 8s, give up this ping cycle
+    return setTimeout(function() { img.src = ""; }, 8000);
   }
-  // Ping immediately + again after 30s in case first didn't fully wake it
-  pingBooking();
-  setTimeout(pingBooking, 30000);
+
+  // Pre-warm silently on load + retry at 25s
+  var warmTimer1 = pingBooking();
+  var warmTimer2 = setTimeout(function() { pingBooking(); }, 25000);
 
   // Intercept booking button clicks
   document.querySelectorAll("a[href*='booking']").forEach(function(a) {
@@ -1786,31 +1814,33 @@ document.addEventListener("DOMContentLoaded", function() {
       var url = a.href;
       overlay.classList.add("active");
 
-      // Open window now (some browsers require synchronous open on click)
+      // Open blank window synchronously (browsers block delayed window.open)
       var win = window.open("about:blank", "_blank", "noopener,noreferrer");
 
-      // Poll until the booking site responds, then navigate the new tab
       var startTime = Date.now();
       var maxWait = 55000;
-      function checkReady() {
-        fetch(BOOKING_URL, { mode: "no-cors", cache: "no-store" })
-          .then(function() {
-            bookingReady = true;
-            overlay.classList.remove("active");
-            if (win && !win.closed) { win.location.href = url; }
-            else { window.open(url, "_blank", "noopener,noreferrer"); }
-          })
-          .catch(function() {
-            if (Date.now() - startTime < maxWait) {
-              setTimeout(checkReady, 2000);
-            } else {
-              // Give up waiting, just navigate
-              overlay.classList.remove("active");
-              if (win && !win.closed) { win.location.href = url; }
-            }
-          });
+      var pollInterval;
+
+      function navigateAndClose() {
+        bookingReady = true;
+        clearInterval(pollInterval);
+        overlay.classList.remove("active");
+        if (win && !win.closed) { win.location.href = url; }
+        else { window.open(url, "_blank", "noopener,noreferrer"); }
       }
-      checkReady();
+
+      // Poll every 2.5s using Image ping
+      pollInterval = setInterval(function() {
+        if (Date.now() - startTime >= maxWait) {
+          clearInterval(pollInterval);
+          overlay.classList.remove("active");
+          if (win && !win.closed) { win.location.href = url; }
+          return;
+        }
+        var img = new Image();
+        img.onload = img.onerror = navigateAndClose;
+        img.src = BOOKING_PING + "?t=" + Date.now();
+      }, 2500);
     });
   });
 
