@@ -205,6 +205,9 @@
   }
   .hero-quote-attr { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: rgba(245,240,232,.35); }
 
+  /* ── ANCHOR SCROLL OFFSET (fixed nav compensation) ── */
+  section[id] { scroll-margin-top: 84px; }
+
   /* ── SHARED SECTION STYLES ── */
   .section-label {
     font-size: 11px; font-weight: 500;
@@ -430,7 +433,15 @@
   .service-mini:hover { border-color: var(--accent); }
   .service-mini-name { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; margin-bottom: 8px; }
   .service-mini-price { font-size: 13px; color: var(--accent); font-weight: 500; margin-bottom: 10px; }
-  .service-mini-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.6; }
+  .service-mini-desc { font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+  .service-mini-link {
+    font-size: 12px; font-weight: 500; letter-spacing: .06em;
+    color: var(--accent); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: gap .2s;
+  }
+  .service-mini-link::after { content: '→'; }
+  .service-mini-link:hover { gap: 10px; }
   .services-footnote {
     text-align: center; margin-top: 40px;
     font-size: 14px; color: var(--muted); font-weight: 300;
@@ -960,7 +971,7 @@
 <!-- HERO -->
 <section id="hero">
   <div class="hero-left">
-    <p class="hero-eyebrow">CDA 認證職涯引導師 × 講師</p>
+    <p class="hero-eyebrow">CDA 認證・104 職涯引導師・桃園市政府合作講師</p>
     <h1 class="hero-title">
       你的能力<br>沒有問題，<br>是<em>語言</em><br>出了問題。
     </h1>
@@ -1041,7 +1052,7 @@
       這些問題，我每週都在處理。<br>
       答案從來不是「努力更多」，是找到正確的角度說自己。
     </p>
-    <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary" rel="noopener noreferrer">來聊聊</a>
+    <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary" rel="noopener noreferrer">預約免費初談</a>
   </div>
 </section>
 
@@ -1139,7 +1150,7 @@
         </div>
       </div>
 
-      <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary" rel="noopener noreferrer">預約一次諮詢，看看我能幫你什麼</a>
+      <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-primary" rel="noopener noreferrer">預約諮詢，看看我能幫你什麼</a>
     </div>
   </div>
 </section>
@@ -1251,7 +1262,7 @@
           <span class="service-price">NT$2,000</span>
           <span class="service-duration">/ 90 分鐘</span>
         </div>
-        <p class="service-note service-note--light">最完整的單次深度諮詢</p>
+        <p class="service-note service-note--light">含職能轉譯矩陣 + 完整書面策略報告</p>
         <a href="https://my-booking-system.onrender.com/" target="_blank" class="btn-service" rel="noopener noreferrer">預約這個方案</a>
       </div>
 
@@ -1281,16 +1292,19 @@
         <p class="service-mini-name">履歷健檢與面試輔導</p>
         <p class="service-mini-price">NT$1,200 ／ 60 分鐘</p>
         <p class="service-mini-desc">用招募方視角找出真正卡關點。諮詢前請提交履歷，顧問預先診斷。</p>
+        <a href="https://my-booking-system.onrender.com/" target="_blank" class="service-mini-link" rel="noopener noreferrer">預約這個項目</a>
       </div>
       <div class="service-mini">
         <p class="service-mini-name">模擬面試</p>
         <p class="service-mini-price">NT$1,200 ／ 60 分鐘</p>
         <p class="service-mini-desc">高強度模擬＋即時反饋。針對你的目標職位設計題組，幫你找到真實盲點。</p>
+        <a href="https://my-booking-system.onrender.com/" target="_blank" class="service-mini-link" rel="noopener noreferrer">預約這個項目</a>
       </div>
       <div class="service-mini">
         <p class="service-mini-name">斜槓職涯諮詢</p>
         <p class="service-mini-price">NT$2,000 ／ 90 分鐘</p>
         <p class="service-mini-desc">用財務結構反推哪條路走得通。搭配多路徑策略藍圖，不靠感覺選方向。</p>
+        <a href="https://my-booking-system.onrender.com/" target="_blank" class="service-mini-link" rel="noopener noreferrer">預約這個項目</a>
       </div>
     </div>
 
@@ -1360,39 +1374,39 @@
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">老師在過程中很用心地聽我的想法，也會指出細節問題，例如哪些地方前後矛盾、哪些能力需要和目標企業的職位做連結。我能感覺到老師沒有敷衍，反而非常耐心，在我卡住時也會等我把想法整理好。</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">學</div>
+          <div class="testimonial-avatar">面</div>
           <div>
             <p class="testimonial-name">模擬面試學員・外商業務轉科技業</p>
             <p class="testimonial-type">Interview Coaching</p>
           </div>
         </div>
-      </div>
+      </article>
 
       <article class="testimonial-card">
         <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">非常感謝蒲朝棟老師給予的指導及建議，解惑我對履歷投遞設定的相關問題，亦精準又具體地提供修改方向和實例，告訴我們什麼內容可以多加以補充說明、提點撰寫時可以加進去的業界指標。獲益良多！</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">學</div>
+          <div class="testimonial-avatar">歷</div>
           <div>
             <p class="testimonial-name">履歷健檢學員・學術研究轉產業界</p>
             <p class="testimonial-type">Resume Review</p>
           </div>
         </div>
-      </div>
+      </article>
 
       <article class="testimonial-card">
         <p class="testimonial-stars" aria-label="五星評價">★★★★★</p>
         <p class="testimonial-quote">"</p>
         <p class="testimonial-text">很感謝朝棟老師給我很有用的建議，尤其是自傳的部分，我當時候不知道怎麼撰寫，我會認為工作經歷已經寫過不應該重複，但是老師給了我很具體的意見，讓我一下就了解了。</p>
         <div class="testimonial-author">
-          <div class="testimonial-avatar">學</div>
+          <div class="testimonial-avatar">涯</div>
           <div>
             <p class="testimonial-name">職涯諮詢學員・傳產管理轉新創營運</p>
             <p class="testimonial-type">Career Consulting</p>
           </div>
         </div>
-      </div>
+      </article>
 
     </div>
 
@@ -1413,7 +1427,8 @@
       </div>
       <div class="trust-divider"></div>
       <div class="trust-stat">
-        <p class="trust-partners">轉職成功・取得 Offer<br>找到求職方向</p>
+        <p class="trust-cert-title">300+</p>
+        <p class="trust-cert-label">客戶・各產業轉職成功</p>
       </div>
     </div>
   </div>
@@ -1471,36 +1486,36 @@
           諮詢是用什麼方式進行？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">線上視訊（Google Meet / Zoom）或面談皆可，依你的需求和地點安排。</li>
-</div>
+        <div class="faq-answer">線上視訊（Google Meet / Zoom）或面談皆可，依你的需求和地點安排。</div>
+      </li>
       <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           我適合找你諮詢嗎？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">如果你有 3 年以上工作經驗、感覺卡住但說不清楚問題在哪，或正在評估轉職、希望有外部視角協助，你就適合。社會新鮮人建議先透過 LINE 說明狀況，我會評估是否合適。</li>
-</div>
+        <div class="faq-answer">如果你有 3 年以上工作經驗、感覺卡住但說不清楚問題在哪，或正在評估轉職、希望有外部視角協助，你就適合。社會新鮮人建議先透過 LINE 說明狀況，我會評估是否合適。</div>
+      </li>
       <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           付款方式有哪些？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">確認諮詢時間後，提供銀行轉帳或其他方式，完成付款後即確認預約。</li>
-</div>
+        <div class="faq-answer">確認諮詢時間後，提供銀行轉帳或其他方式，完成付款後即確認預約。</div>
+      </li>
       <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           預約後多快能排到？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">通常 3–7 個工作天內可以安排，視當週排程而定。如有急迫需求請於 LINE 說明。</li>
-</div>
+        <div class="faq-answer">通常 3–7 個工作天內可以安排，視當週排程而定。如有急迫需求請於 LINE 說明。</div>
+      </li>
       <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           諮詢內容會保密嗎？
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer">會。你的基本資料與諮詢內容受諮詢同意書保護，不對外揭露。</li>
-</div>
+        <div class="faq-answer">會。你的基本資料與諮詢內容受諮詢同意書保護，不對外揭露。</div>
+      </li>
       <li class="faq-item">
         <button class="faq-question" aria-expanded="false">
           不確定要選哪個方案？
@@ -1508,9 +1523,7 @@
         </button>
         <div class="faq-answer">先加 LINE 說說你的狀況，我會建議最適合你的方案，不需要自己判斷。</div>
       </li>
-</div>
-
-</ul>
+    </ul>
     <div class="faq-contact-box">
       <p class="faq-contact-text">還有其他問題？直接加 LINE 問我，通常當天回覆。</p>
       <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary" rel="noopener noreferrer">加入 LINE 官方帳號</a>
