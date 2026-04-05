@@ -8,7 +8,7 @@
         { "key": "X-XSS-Protection", "value": "1; mode=block" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'sha256-PkpOFUF3bsy+2iG+weTJHo6TxJq6LzQV4FcZV3Ge8xY=' 'sha256-oPcyyQS/KC5SMQ2L7Xvz7qQlqJCECJZtVLKLGInk6ro=' 'sha256-va7+EF8P2Jizqwh4L3zB70XmGG9RqVHmrp+OMlDTWCE=' 'sha256-ZIPg4JsiR/UYQ1mHpqFgQhtvT9W69g0Cws0ZCe5qzSY=' 'sha256-jdxp+UPhwlGFKR+UDAr+wOd3nrEm6Y3tuXfg4q3cY1A=' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.google-analytics.com https://my-booking-system.onrender.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://my-booking-system.onrender.com; frame-ancestors 'none';" },
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'sha256-PkpOFUF3bsy+2iG+weTJHo6TxJq6LzQV4FcZV3Ge8xY=' 'sha256-HYJ2u2U70JBZw+lQZ/XV53MLqiBtWaxiWSvSYig2CV0=' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.google-analytics.com https://my-booking-system.onrender.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://my-booking-system.onrender.com; frame-ancestors 'none';" },
         { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
       ]
     },
