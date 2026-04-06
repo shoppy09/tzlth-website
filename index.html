@@ -429,6 +429,29 @@
   .service-card.featured .btn-service { border-color: var(--accent); background: var(--accent); color: var(--white); }
   .service-card.featured .btn-service:hover { background: var(--white); color: var(--charcoal); }
 
+  /* Entry service banner */
+  .service-entry {
+    border: 1px solid var(--accent); padding: 32px 40px;
+    margin-bottom: 20px; background: var(--cream);
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    flex-wrap: wrap;
+  }
+  .service-entry-left { flex: 1; min-width: 240px; }
+  .service-entry-tag {
+    font-size: 10px; font-weight: 500; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--accent);
+    background: rgba(196,98,45,.08); padding: 4px 12px;
+    display: inline-block; margin-bottom: 12px;
+  }
+  .service-entry-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .service-entry-desc { font-size: 14px; font-weight: 300; color: var(--charcoal-soft); line-height: 1.7; }
+  .service-entry-right { display: flex; align-items: center; gap: 28px; flex-shrink: 0; flex-wrap: wrap; }
+  .service-entry-price-block { text-align: right; }
+  .service-entry-price { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 600; color: var(--accent); display: block; }
+  .service-entry-duration { font-size: 12px; color: var(--muted); }
+  .service-entry-note { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  @media (max-width: 768px) { .service-entry { padding: 24px; } .service-entry-price-block { text-align: left; } }
+
   /* Companion services row */
   .services-row2 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 20px; }
   .service-mini {
@@ -1379,6 +1402,27 @@
   <div class="services-inner">
     <span class="section-label reveal">服務與定價</span>
     <h2 class="section-title reveal">職涯諮詢服務，<br>你可以這樣找我。</h2>
+
+    <!-- Entry level: 30-min mini consultation -->
+    <div class="service-entry reveal">
+      <div class="service-entry-left">
+        <span class="service-entry-tag">入門首選・低門檻試試看</span>
+        <h3 class="service-entry-name">方向快速釐清諮詢（30 分鐘）</h3>
+        <p class="service-entry-desc">
+          還不確定要選哪個方案？或是猶豫要不要諮詢？這個方案讓你用最低的成本，
+          先跟我聊清楚你的狀況。我會告訴你你卡在哪、最適合從哪裡開始。
+          若當場決定升級為完整諮詢，費用全額折抵。
+        </p>
+      </div>
+      <div class="service-entry-right">
+        <div class="service-entry-price-block">
+          <span class="service-entry-price">NT$600</span>
+          <span class="service-entry-duration">/ 30 分鐘</span>
+          <p class="service-entry-note">可折抵後續任一正式方案</p>
+        </div>
+        <a href="https://lin.ee/IOX6V66" target="_blank" class="btn-primary" rel="noopener noreferrer">加 LINE 預約</a>
+      </div>
+    </div>
 
     <!-- Main 3 services -->
     <div class="services-grid">
