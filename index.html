@@ -804,6 +804,52 @@
     #ai-tool { padding: 80px 24px; }
   }
 
+  /* ── QUIZ ── */
+  #quiz { padding: 120px 60px; background: var(--white); }
+  .quiz-inner { max-width: 720px; margin: 0 auto; }
+  .quiz-screen { }
+  .quiz-screen.hidden { display: none; }
+  .quiz-label { justify-content: center; }
+  .quiz-intro { text-align: center; }
+  .quiz-intro-title { font-family: 'Playfair Display', serif; font-size: clamp(28px,3vw,42px); font-weight: 600; line-height: 1.3; margin-bottom: 16px; }
+  .quiz-intro-title em { font-style: italic; color: var(--accent); }
+  .quiz-intro-sub { font-size: 17px; font-weight: 300; color: var(--charcoal-soft); line-height: 1.7; margin-bottom: 12px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .quiz-intro-meta { font-size: 13px; color: var(--muted); margin-bottom: 40px; letter-spacing: .04em; }
+  .quiz-progress-wrap { margin-bottom: 40px; }
+  .quiz-progress-track { height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; margin-bottom: 10px; }
+  .quiz-progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width .4s ease; width: 0%; }
+  .quiz-step-label { font-size: 12px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  .quiz-q { font-family: 'Playfair Display', serif; font-size: clamp(20px,2.4vw,27px); font-weight: 600; line-height: 1.45; margin-bottom: 32px; color: var(--charcoal); }
+  .quiz-options { display: flex; flex-direction: column; gap: 10px; }
+  .quiz-option {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 18px 24px; border: 1px solid var(--border);
+    background: var(--cream); cursor: pointer;
+    transition: border-color .2s, background .2s, transform .15s;
+    text-align: left; width: 100%;
+    font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 300;
+    color: var(--charcoal-soft); line-height: 1.6; border-radius: 0;
+  }
+  .quiz-option:hover { border-color: var(--accent); background: var(--white); transform: translateX(3px); }
+  .quiz-option-letter { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 600; color: var(--accent); min-width: 18px; flex-shrink: 0; padding-top: 1px; }
+  .quiz-result-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); border: 1px solid rgba(196,98,45,.4); padding: 5px 16px; margin-bottom: 28px; }
+  .quiz-result-type { font-size: 12px; color: var(--muted); margin-bottom: 14px; letter-spacing: .1em; text-transform: uppercase; }
+  .quiz-result-title { font-family: 'Playfair Display', serif; font-size: clamp(24px,2.8vw,36px); font-weight: 600; line-height: 1.35; margin-bottom: 24px; }
+  .quiz-result-title em { font-style: italic; color: var(--accent); }
+  .quiz-result-body { font-size: 16px; font-weight: 300; color: var(--charcoal-soft); line-height: 1.9; margin-bottom: 36px; max-width: 620px; }
+  .quiz-result-box { background: var(--charcoal); padding: 32px 36px; margin-bottom: 32px; border-left: 3px solid var(--accent); }
+  .quiz-result-box-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent-light); margin-bottom: 12px; }
+  .quiz-result-box-name { font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 600; color: var(--cream); margin-bottom: 10px; }
+  .quiz-result-box-reason { font-size: 14px; font-weight: 300; color: rgba(245,240,232,.6); line-height: 1.75; }
+  .quiz-result-actions { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+  .quiz-retake { font-size: 14px; color: var(--muted); background: none; border: none; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; transition: color .2s; padding: 0; font-family: 'DM Sans', sans-serif; }
+  .quiz-retake:hover { color: var(--charcoal); }
+  @media (max-width: 768px) {
+    #quiz { padding: 80px 24px; }
+    .quiz-option { padding: 14px 16px; font-size: 14px; }
+    .quiz-result-box { padding: 24px 24px; }
+  }
+
   /* ── LEAD CAPTURE ── */
   #lead { padding: 100px 60px; background: var(--white); }
   .lead-inner { max-width: 780px; margin: 0 auto; text-align: center; }
@@ -1063,6 +1109,7 @@
     <li><a href="#services">服務與定價</a></li>
     <li><a href="#testimonials">學員回饋</a></li>
     <li><a href="#faq">常見問題</a></li>
+    <li><a href="#quiz">職涯診斷</a></li>
     <li><a href="#ai-tool">AI 履歷診斷</a></li>
     <li><a href="https://lin.ee/IOX6V66" target="_blank" class="nav-line" rel="noopener noreferrer">LINE 聯絡</a></li>
     <li><a href="https://my-booking-system.onrender.com/" target="_blank" class="nav-cta" rel="noopener noreferrer">預約諮詢</a></li>
@@ -1697,6 +1744,50 @@
   </div>
 </section>
 
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="quiz-inner">
+    <span class="section-label quiz-label reveal">免費自我診斷</span>
+
+    <!-- Screen 0: Intro -->
+    <div class="quiz-screen" id="quizIntro">
+      <div class="quiz-intro reveal">
+        <h2 class="quiz-intro-title">你卡在哪裡？<br><em>90 秒</em>找出職涯卡關類型。</h2>
+        <p class="quiz-intro-sub">6 個問題，幫你找出真正卡住你的那一層。不是測試，是診斷。</p>
+        <p class="quiz-intro-meta">6 題・無需登入・結果即時顯示</p>
+        <button class="btn-primary" id="quizStart">開始診斷 →</button>
+      </div>
+    </div>
+
+    <!-- Screen 1: Questions -->
+    <div class="quiz-screen hidden" id="quizQuestions">
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-track"><div class="quiz-progress-fill" id="quizFill"></div></div>
+        <p class="quiz-step-label" id="quizStepLabel">問題 1 / 6</p>
+      </div>
+      <p class="quiz-q" id="quizQuestion"></p>
+      <div class="quiz-options" id="quizOptions"></div>
+    </div>
+
+    <!-- Screen 2: Result -->
+    <div class="quiz-screen hidden" id="quizResult">
+      <div class="quiz-result-tag">診斷結果</div>
+      <p class="quiz-result-type" id="resultType"></p>
+      <h2 class="quiz-result-title" id="resultTitle"></h2>
+      <p class="quiz-result-body" id="resultBody"></p>
+      <div class="quiz-result-box">
+        <p class="quiz-result-box-label">最適合你的第一步</p>
+        <p class="quiz-result-box-name" id="resultService"></p>
+        <p class="quiz-result-box-reason" id="resultReason"></p>
+      </div>
+      <div class="quiz-result-actions">
+        <a href="https://my-booking-system.onrender.com/" target="_blank" rel="noopener noreferrer" class="btn-primary" id="resultCta">預約免費初談 →</a>
+        <button class="quiz-retake" id="quizRetake">重新作答</button>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- LEAD CAPTURE -->
 <section id="lead">
