@@ -871,7 +871,23 @@
   @media (max-width: 900px) {
     .ai-tool-card { grid-template-columns: 1fr; gap: 40px; padding: 40px 32px; }
     #ai-tool { padding: 80px 24px; }
+    .ai-tool-secondary-link { padding: 16px 20px; }
   }
+
+  /* ── AI TOOL SECONDARY ── */
+  .ai-tool-secondary { margin-top: 20px; }
+  .ai-tool-secondary-link {
+    display: flex; align-items: center; justify-content: space-between; gap: 24px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.10);
+    border-radius: 4px; padding: 20px 28px;
+    text-decoration: none; color: var(--cream);
+    transition: background .2s;
+  }
+  .ai-tool-secondary-link:hover { background: rgba(255,255,255,.08); }
+  .ai-tool-secondary-link h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+  .ai-tool-secondary-link p { font-size: 13px; font-weight: 300; color: rgba(245,240,232,.6); margin: 0; }
+  .ai-tool-secondary-arrow { font-size: 18px; color: var(--accent); flex-shrink: 0; transition: transform .2s; }
+  .ai-tool-secondary-link:hover .ai-tool-secondary-arrow { transform: translateX(4px); }
 
   /* ── QUIZ ── */
   #quiz { padding: 120px 60px; background: var(--white); }
@@ -2275,6 +2291,17 @@
           <p class="ai-output-summary">跨部門溝通與利害關係人管理：依據「協調生產、設備、品質、研發四個跨部門單位」的經歷，顯示其具備整合不同立場資源的能力。</p>
         </div>
       </div>
+    </div>
+    <!-- BURNOUT TOOL -->
+    <div class="ai-tool-secondary reveal">
+      <a href="https://resume-diagnosis.vercel.app/burnout" target="_blank" rel="noopener noreferrer" class="ai-tool-secondary-link">
+        <div>
+          <p class="ai-tool-card-tag">免費快測 · 2 分鐘</p>
+          <h3>職業倦怠快測</h3>
+          <p>診斷你是「累了」還是「倦怠了」——找出真正卡關的根源</p>
+        </div>
+        <span class="ai-tool-secondary-arrow">→</span>
+      </a>
     </div>
     <p class="ai-tool-note reveal">AI 診斷是第一步。如果報告讓你看見問題、卻不確定怎麼解——<a href="https://my-booking-system.onrender.com/" target="_blank" rel="noopener noreferrer" class="ai-tool-note-link">帶著報告來諮詢</a>，我們一起拆解。</p>
   </div>
