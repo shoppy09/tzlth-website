@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
+  // Announcement bar dismiss
+  var announceBar = document.getElementById("announceBar");
+  var announceClose = document.getElementById("announceClose");
+  if (announceBar && announceClose) {
+    if (localStorage.getItem("barDismissed") === "1") {
+      announceBar.classList.add("is-hidden");
+      document.body.classList.add("bar-dismissed");
+    }
+    announceClose.addEventListener("click", function() {
+      announceBar.classList.add("is-hidden");
+      document.body.classList.add("bar-dismissed");
+      localStorage.setItem("barDismissed", "1");
+    });
+  }
+
   // Hamburger menu toggle
   var btn = document.getElementById("hamburgerBtn");
   var nav = document.getElementById("navLinks");
@@ -34,6 +49,13 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     }, { threshold: 0.05, rootMargin: "0px 0px 50px 0px" });
     reveals.forEach(function(el) { obs.observe(el); });
+    // Fallback: after 3s show any remaining hidden reveals (handles non-scrollable preview environments)
+    setTimeout(function() {
+      reveals.forEach(function(el) {
+        if (!el.classList.contains("visible")) { el.classList.add("visible"); }
+      });
+      countEls.forEach(function(el) { animateCount(el); });
+    }, 3000);
     if (countEls.length) {
       var countObs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
@@ -126,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // ── BOOKING SYSTEM WAKE-UP ──
-  var BOOKING_URL = "https://my-booking-system.onrender.com/";
+  var BOOKING_URL = "https://booking.careerssl.com";
   var BOOKING_PING = BOOKING_URL + "favicon.ico";
   var bookingReady = false;
   var overlay = document.getElementById("bookingOverlay");
@@ -340,6 +362,44 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("resultReason").textContent = r.reason;
     showScreen(resultScreen);
     resultScreen.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // Quiz email capture — reset state
+    var tagMap = { L: "quiz-語言型卡關", D: "quiz-方向型卡關", P: "quiz-心理型卡關", N: "quiz-敘事型卡關" };
+    var currentTag = tagMap[winner] || "quiz-測驗";
+    var emailInput  = document.getElementById("quizEmailInput");
+    var emailForm   = document.getElementById("quizEmailForm");
+    var emailSuccess = document.getElementById("quizEmailSuccess");
+    var submitBtn   = document.getElementById("quizEmailSubmit");
+    if (emailInput) {
+      emailInput.value = "";
+      emailForm.classList.remove("hidden");
+      emailSuccess.classList.add("hidden");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "寄給我 →";
+    }
+
+    // Submit handler
+    if (submitBtn) {
+      submitBtn.onclick = function() {
+        var email = emailInput.value.trim();
+        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRe.test(email)) { emailInput.focus(); return; }
+        submitBtn.disabled = true;
+        submitBtn.textContent = "送出中…";
+        var fd = new FormData();
+        fd.append("email_address", email);
+        fd.append("tags[]", currentTag);
+        fetch("https://app.kit.com/forms/9309490/subscriptions", {
+          method: "POST", body: fd, headers: { "Accept": "application/json" }
+        }).then(function() {
+          emailForm.classList.add("hidden");
+          emailSuccess.classList.remove("hidden");
+        }).catch(function() {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "寄給我 →";
+        });
+      };
+    }
   }
 
   startBtn.addEventListener("click", function() {

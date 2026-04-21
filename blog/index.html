@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>職涯文章｜職涯停看聽 Tim</title>
+<meta name="description" content="職涯顧問 Tim 的文章：轉職策略、履歷撰寫、面試技巧、職場思維。實戰經驗整理，幫你把職涯想清楚。">
+<link rel="canonical" href="https://tzlth-website.vercel.app/blog/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TK8D1DX7MJ"></script>
+<script src="../blog-ga.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
+<style>
+  :root {
+    --cream: #F5F0E8; --charcoal: #1C1C1A; --charcoal-soft: #3A3A37;
+    --accent: #C4622D; --muted: #8A8780; --border: #D8D3C8; --white: #FDFCF9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--charcoal); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(245,240,232,.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 16px 60px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: var(--charcoal); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 14px; color: var(--charcoal-soft); text-decoration: none; transition: color .2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { background: var(--accent); color: var(--white) !important; padding: 10px 20px; border-radius: 8px; font-weight: 500 !important; }
+  .nav-cta:hover { opacity: .9; }
+  .nav-line { border: 1.5px solid var(--accent); color: var(--accent) !important; padding: 8px 16px; border-radius: 8px; }
+  .nav-current { color: var(--accent) !important; font-weight: 500; }
+  @media (max-width: 768px) { nav { padding: 14px 24px; } .nav-links { gap: 16px; } .nav-links li:not(:last-child):not(:nth-last-child(2)):not(:nth-last-child(3)) { display: none; } }
+
+  /* HEADER */
+  .blog-header { padding: 80px 60px 60px; max-width: 1100px; margin: 0 auto; }
+  .blog-header-label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; display: block; }
+  .blog-header-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 600; line-height: 1.2; margin-bottom: 16px; }
+  .blog-header-sub { font-size: 16px; color: var(--muted); max-width: 560px; }
+  @media (max-width: 768px) { .blog-header { padding: 60px 24px 40px; } }
+
+  /* SEARCH & FILTER */
+  .blog-controls { padding: 0 60px 40px; max-width: 1100px; margin: 0 auto; display: flex; gap: 12px; flex-wrap: wrap; }
+  .blog-search { flex: 1; min-width: 200px; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 8px; background: var(--white); font-size: 14px; font-family: inherit; color: var(--charcoal); }
+  .blog-search:focus { outline: none; border-color: var(--accent); }
+  .blog-search::placeholder { color: var(--muted); }
+  .blog-tag-filter { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .tag-btn { font-size: 12px; padding: 6px 14px; border: 1px solid var(--border); border-radius: 20px; background: var(--white); color: var(--charcoal-soft); cursor: pointer; transition: all .2s; font-family: inherit; }
+  .tag-btn:hover, .tag-btn.active { background: var(--accent); color: var(--white); border-color: var(--accent); }
+  @media (max-width: 768px) { .blog-controls { padding: 0 24px 32px; } }
+
+  /* GRID */
+  .blog-grid-wrap { padding: 0 60px 80px; max-width: 1100px; margin: 0 auto; }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  @media (max-width: 960px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr; } .blog-grid-wrap { padding: 0 24px 60px; } }
+
+  /* CARD */
+  .blog-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: box-shadow .25s, transform .25s; display: flex; flex-direction: column; }
+  .blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.09); transform: translateY(-3px); }
+  .blog-card-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+  .blog-card-date { font-size: 11px; color: var(--muted); letter-spacing: .06em; margin-bottom: 10px; }
+  .blog-card-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; line-height: 1.45; margin-bottom: 12px; color: var(--charcoal); }
+  .blog-card-excerpt { font-size: 13.5px; color: var(--charcoal-soft); line-height: 1.75; flex: 1; margin-bottom: 20px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .blog-card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .blog-card-tag { font-size: 11px; padding: 3px 10px; background: var(--cream); border-radius: 20px; color: var(--muted); }
+  .blog-card-link { font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: gap .2s; }
+  .blog-card-link:hover { gap: 8px; }
+
+  /* EMPTY STATE */
+  .blog-empty { text-align: center; padding: 80px 24px; color: var(--muted); display: none; }
+  .blog-empty-title { font-size: 18px; margin-bottom: 8px; color: var(--charcoal-soft); }
+
+  /* LOAD MORE */
+  .blog-load-more { text-align: center; margin-top: 40px; }
+  .btn-load-more { background: transparent; border: 1.5px solid var(--border); color: var(--charcoal-soft); font-family: inherit; font-size: 14px; font-weight: 500; padding: 14px 36px; border-radius: 8px; cursor: pointer; transition: all .2s; }
+  .btn-load-more:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-load-more:disabled { opacity: .4; cursor: default; }
+
+  /* FOOTER CTA */
+  .blog-cta { background: var(--charcoal); color: var(--white); padding: 80px 60px; text-align: center; }
+  .blog-cta-title { font-family: 'Playfair Display', serif; font-size: clamp(24px,3vw,36px); margin-bottom: 16px; }
+  .blog-cta-sub { color: rgba(245,240,232,.7); font-size: 15px; margin-bottom: 36px; }
+  .btn-cta { display: inline-block; background: var(--accent); color: var(--white); padding: 16px 36px; border-radius: 8px; font-weight: 500; text-decoration: none; font-size: 15px; transition: opacity .2s; }
+  .btn-cta:hover { opacity: .88; }
+  footer { padding: 32px 60px; border-top: 1px solid rgba(255,255,255,.08); background: var(--charcoal); color: rgba(245,240,232,.4); font-size: 13px; display: flex; justify-content: space-between; align-items: center; }
+  footer a { color: rgba(245,240,232,.4); text-decoration: none; }
+  @media (max-width: 768px) { .blog-cta { padding: 60px 24px; } footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">職涯<span>停看聽</span></a>
+  <ul class="nav-links">
+    <li><a href="/#about">關於我</a></li>
+    <li><a href="/#cases">客戶案例</a></li>
+    <li><a href="/#services">服務與定價</a></li>
+    <li><a href="/#lead">電子書</a></li>
+    <li><a href="/#testimonials">學員回饋</a></li>
+    <li><a href="/#faq">常見問題</a></li>
+    <li><a href="/#quiz">職涯診斷</a></li>
+    <li><a href="/#ai-tool">AI 履歷診斷</a></li>
+    <li><a href="/blog/" class="nav-current">文章</a></li>
+    <li><a href="https://lin.ee/IOX6V66" target="_blank" rel="noopener noreferrer" class="nav-line">LINE 聯絡</a></li>
+    <li><a href="https://booking.careerssl.com" target="_blank" rel="noopener" class="nav-cta">預約諮詢</a></li>
+  </ul>
+</nav>
+
+<div class="blog-header">
+  <span class="blog-header-label">職涯文章</span>
+  <h1 class="blog-header-title">把職涯想清楚，<br>從這裡開始。</h1>
+  <p class="blog-header-sub">轉職策略、履歷撰寫、面試技巧、職場思維。實戰整理，不是空談。</p>
+</div>
+
+<div class="blog-controls">
+  <input type="search" class="blog-search" id="blogSearch" placeholder="搜尋文章關鍵字…" aria-label="搜尋文章">
+  <div class="blog-tag-filter" id="tagFilter">
+    <button class="tag-btn active" data-tag="all">全部</button>
+  </div>
+</div>
+
+<div class="blog-grid-wrap">
+  <div class="blog-grid" id="blogGrid"></div>
+  <div class="blog-empty" id="blogEmpty">
+    <p class="blog-empty-title">沒有符合的文章</p>
+    <p>試試其他關鍵字</p>
+  </div>
+  <div class="blog-load-more" id="loadMoreWrap">
+    <button class="btn-load-more" id="loadMoreBtn">載入更多文章</button>
+  </div>
+</div>
+
+<div class="blog-cta">
+  <h2 class="blog-cta-title">文章讀完了，<br>準備好談談你的狀況？</h2>
+  <p class="blog-cta-sub">30 分鐘免費初談，我們先聊聊再說。</p>
+  <a href="https://booking.careerssl.com" target="_blank" rel="noopener" class="btn-cta"
+     onclick="trackBlogListCta('booking')">預約免費初談 →</a>
+</div>
+
+<footer>
+  <span>© 2025 職涯停看聽 Tim</span>
+  <a href="/">← 回主網站</a>
+</footer>
+
+<script src="./blog.js"></script>
+</body>
+</html>
