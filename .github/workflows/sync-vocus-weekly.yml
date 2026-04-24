@@ -1,0 +1,55 @@
+name: Vocus 週日自動同步
+
+on:
+  schedule:
+    # 每週日台灣 01:00（UTC 週六 17:00）
+    - cron: '0 17 * * 6'
+  workflow_dispatch:  # 可手動觸發
+
+jobs:
+  sync-vocus:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Sync Vocus articles
+        id: sync
+        run: |
+          python import_vocus.py 2>&1 | tee /tmp/sync-output.txt
+
+          # 統計新增/變更檔案數
+          NEW_COUNT=$(git status --porcelain blog/ | grep -E "^(\?\?|A|M)" | wc -l | tr -d ' ')
+          echo "new_count=${NEW_COUNT}" >> $GITHUB_OUTPUT
+
+      - name: Commit and push if changes
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add blog/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          NEW_COUNT="${{ steps.sync.outputs.new_count }}"
+          DATE=$(date +%Y-%m-%d)
+          git commit -m "auto: Vocus 週日同步 ${DATE}（新增/變更 ${NEW_COUNT} 篇）"
+          git pull --rebase origin main
+          git push
+          echo "✅ Vocus 同步完成"
+
+      - name: Note about deployment
+        run: |
+          echo "⚠️ Vercel GitHub 自動部署已永久停用（tzlth-hq CLAUDE.md 規則）"
+          echo "請 Tim 在方便時執行 npx vercel --prod 部署新文章"
