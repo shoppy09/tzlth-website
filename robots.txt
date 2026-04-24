@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tzlth-website.vercel.app/sitemap.xml
+Sitemap: https://www.careerssl.com/sitemap.xml
