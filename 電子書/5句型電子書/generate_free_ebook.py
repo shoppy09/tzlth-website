@@ -1,13 +1,15 @@
 """
 產生「讓履歷被看見的關鍵句型_免費精華版.docx」
-v2 — 依評估報告修正（2026-04-25）
-  修正 1：移除「7秒」，改為 ATS 現實說法
-  修正 2：補選題邏輯（為什麼選句型一和句型三）
-  修正 3：補「沒有數字怎麼辦」小框
-  修正 4：補人事行政 NT$24萬 估算邏輯
-  修正 5：補 ATS 關聯性一句話
-  修正 6：補非辦公室背景範例（護理師）
-  修正 7：補 NT$199 與主指南定位說明
+v3 — 依第二次評估報告修正（2026-04-25）
+  v2 既有修正（保留）：
+    - 移除「7秒」改 ATS 現實說法 / 選題邏輯 / 沒有數字小框
+    - NT$24萬估算邏輯 / ATS關聯性 / 護理師範例 / CTA定位說明
+  v3 新增修正：
+    Fix A：移除「眼動研究顯示」（無來源），改為保守說法
+    Fix B：B2B 範例「年營收」→「年化合約金額」（避免歧義）
+    Fix C：PAR 例一 NT$30萬 → NT$14萬（統一 NT$2,000/天假設），補 † 腳注
+    Fix D：PAR 例二 客戶留存率補基準（從 72% 提升至 90%）
+    Fix E：結語 AI 診斷 CTA 視覺提升（淡藍底色框，轉換障礙最低入口）
 """
 from docx import Document
 from docx.shared import Pt, RGBColor, Cm
@@ -255,8 +257,8 @@ heading1('給你的一段話')
 # 修正 1：移除「7秒」，改為 ATS 現實說法
 para(
     '現在大多數企業的第一關篩選是 ATS 系統，不是人眼——履歷在被人閱讀之前，'
-    '就已經被系統根據關鍵詞過濾過一輪。通過 ATS 之後，HR 對每份履歷的人工初審時間極短：'
-    '眼動研究顯示多數在 10–30 秒內決定是否繼續看。'
+    '就已經被系統根據關鍵詞過濾過一輪。通過 ATS 之後，HR 對每份履歷的人工初審時間極短，'
+    '多數在 10–30 秒內決定是否繼續看，'
     '這意味著前三條工作成果的句子，決定了後面有沒有機會被讀到。',
     space_before=6
 )
@@ -316,7 +318,7 @@ add_comparison_table([
     (1, '負責社群媒體管理，提升品牌知名度',
         '主導 Instagram 帳號重整，制定每週 5 篇固定發文節奏，3 個月使粉絲從 2,100 成長至 8,400（+300%），互動率從 0.8% 提升至 4.2%'),
     (2, '協助業務開發，業績良好',
-        '獨立開發 B2B 新客戶，半年簽約 12 家，貢獻新增年營收 NT$180 萬，達成率 120%'),
+        '獨立開發 B2B 新客戶，半年簽約 12 家，貢獻新增年化合約金額 NT$180 萬，達成率 120%'),
     (3, '負責人事行政工作',
         '建立新進員工到職流程，將入職培訓時間從 2 週縮短至 5 天，年省人力成本估計 NT$24 萬 *'),
     (4, '負責病患照護與衛教（護理師）',
@@ -383,13 +385,15 @@ bullet('結果：最終發生了什麼改變？用數字或具體描述')
 heading2('改寫對照')
 add_comparison_table([
     (1, '優化了部門報表流程',
-        '發現月報需耗費 3 名同仁各 2 天手動彙整，主導建立 Excel 自動化彙報模板，將製作時間從 6 人天縮短至 4 小時，年省人力成本估算約 NT$30 萬'),
+        '發現月報需耗費 3 名同仁各 2 天手動彙整，主導建立 Excel 自動化彙報模板，將製作時間從 6 人天縮短至 4 小時，年省人力成本估算約 NT$14 萬 †'),
     (2, '改善客訴處理流程',
-        '發現客訴平均回應時間長達 4.2 天，導致客戶流失率偏高；重新設計分級回應 SOP，並培訓 8 名客服同仁，3 個月後平均回應時間降至 1.5 天，客戶留存率提升 18%'),
+        '發現客訴平均回應時間長達 4.2 天，導致客戶流失率偏高；重新設計分級回應 SOP，並培訓 8 名客服同仁，3 個月後平均回應時間降至 1.5 天，客戶留存率從 72% 提升至 90%'),
     (3, '推動跨部門協作',
         '識別業務與技術部門溝通落差導致交期延誤，發起雙週跨部門同步會議，制定標準需求規格書格式，專案交期達成率從 61% 提升至 89%'),
 ])
-doc.add_paragraph()  # spacing
+add_footnote(
+    '† 估算基準：6人天/月 × 12個月 = 72人天/年 × 平均日薪成本 NT$2,000 = NT$144,000，約 NT$14 萬'
+)
 
 heading2('練習格式')
 add_practice_box([
@@ -453,9 +457,13 @@ para(
     '也就是說，不只是「怎麼說」，還有「說什麼」和「說給誰聽」。'
 )
 para('這個部分每個人的狀況都不同，文字很難完全解決。如果你想針對自己的情況做更深入的評估，歡迎聯絡我：')
-para('📌 加 LINE 洽談：https://lin.ee/IOX6V66', space_before=6)
-para('📌 官網預約：https://www.careerssl.com/', space_before=0)
-para('📌 AI 履歷快速診斷（免費）：https://resume-diagnosis.vercel.app/', space_before=0)
+# Fix E：AI 診斷 CTA 最顯眼（轉換障礙最低，獨立框出）
+shaded_para('▶ 立即試用（免費）：AI 履歷快速診斷', 'E8F4FD',
+            size=12, bold=True, color=ACCENT, space_before=10, space_after=2)
+shaded_para('https://resume-diagnosis.vercel.app/', 'E8F4FD',
+            size=10.5, color=ACCENT, space_before=0, space_after=8)
+para('📌 加 LINE 洽談：https://lin.ee/IOX6V66', space_before=0, size=10, color=GRAY)
+para('📌 官網預約：https://www.careerssl.com/', space_before=0, size=10, color=GRAY)
 
 divider()
 para('職涯停看聽 | 蒲朝棟 Tim', size=10, color=GRAY,
@@ -465,7 +473,12 @@ para('CDA 認證職涯顧問・104 職涯引導師', size=10, color=GRAY,
 para('服務 300+ 位求職者，專注 3-10 年中階職場人才', size=10, color=GRAY,
      align=WD_ALIGN_PARAGRAPH.CENTER, space_before=0)
 
-# ── 儲存 ──────────────────────────────────────────
-out_path = r'C:\Users\USER\Desktop\職涯停看聽_網站\電子書\5句型電子書\讓履歷被看見的關鍵句型_免費精華版.docx'
-doc.save(out_path)
-print(f'✅ 已儲存：{out_path}')
+# ── 儲存（雙路徑：主檔 + v3 命名版）──────────────
+import os
+base = r'C:\Users\USER\Desktop\職涯停看聽_網站\電子書\5句型電子書'
+out_main = os.path.join(base, '讓履歷被看見的關鍵句型_免費精華版.docx')
+out_v3   = os.path.join(base, '讓履歷被看見的關鍵句型_免費精華版_v3_第二次評估修正後.docx')
+doc.save(out_main)
+doc.save(out_v3)
+print(f'✅ 主檔：{out_main}')
+print(f'✅ v3 命名：{out_v3}')
