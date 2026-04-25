@@ -34,6 +34,7 @@
 
 | 日期 | 修改內容 | 執行視窗 | 狀態 |
 |------|---------|---------|------|
+| 2026-04-25 | 面試高分回答框架 Kit 表單 `.lead-card-note` 加入垃圾信件夾提醒文字（Task 2）| 總部視窗 | ✅ |
 | 2026-04-25 | 10 篇精選部落格新增「結論先行」開頭段落（GEO 優化，P1-C）— 目標 AI Overview / Featured Snippet 前 30% 引用 | 總部視窗 | ✅ |
 | 2026-04-20 | #ai-tool 區塊新增「職業倦怠快測」次要卡片（連結至 resume-diagnosis.vercel.app/burnout，含 mobile CSS）| 總部視窗 | ✅ |
 | 2026-04-12 | Cookie 政策頁（/cookie-policy.html）上線，首頁加入同意橫幅，頁腳加入連結 | 總部視窗 | ✅ |
