@@ -1,10 +1,13 @@
-name: Vocus 週日自動同步
+name: Vocus 手動同步（歷史文章補錄用）
+
+# 2026-04-27 架構決策：
+# careerssl.com 改為所有新文章的首發平台（add_article.py）。
+# 自動排程已停用，避免 Vocus 同步覆蓋 canonical 主權。
+# 此 workflow 保留 workflow_dispatch 供 Tim 手動補錄歷史文章使用。
+# 詳見 strategy/seo-blog-strategy-v1.md §3.4 / §3.5
 
 on:
-  schedule:
-    # 每週日台灣 01:00（UTC 週六 17:00）
-    - cron: '0 17 * * 6'
-  workflow_dispatch:  # 可手動觸發
+  workflow_dispatch:  # 僅手動觸發（Tim 決定補錄歷史文章時使用）
 
 jobs:
   sync-vocus:
