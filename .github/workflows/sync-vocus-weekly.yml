@@ -45,8 +45,7 @@ jobs:
           NEW_COUNT="${{ steps.sync.outputs.new_count }}"
           DATE=$(date +%Y-%m-%d)
           git commit -m "auto: Vocus 週日同步 ${DATE}（新增/變更 ${NEW_COUNT} 篇）"
-          git pull --rebase origin main
-          git push
+          git push origin main
           echo "✅ Vocus 同步完成"
 
       - name: Note about deployment
