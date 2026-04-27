@@ -7,7 +7,12 @@
    4. article-extras.js script tag (before </body>)
    5. Extra CSS for email-sub-box and related-articles
 """
-import os, re
+import os, re, sys
+
+# Windows cp950 terminal 無法輸出 emoji，強制改為 UTF-8（IMP-063 追溯修正）
+if sys.stdout.encoding and sys.stdout.encoding.lower() in ('cp950', 'big5', 'gbk', 'cp936'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
 
 BLOG_DIR = r'C:\Users\USER\Desktop\職涯停看聽_網站\blog'
 

@@ -28,6 +28,11 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin
 
+# Windows cp950 terminal 無法輸出 emoji，強制改為 UTF-8（IMP-063 追溯修正）
+if sys.stdout.encoding and sys.stdout.encoding.lower() in ('cp950', 'big5', 'gbk', 'cp936'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 import requests
 from bs4 import BeautifulSoup
 
