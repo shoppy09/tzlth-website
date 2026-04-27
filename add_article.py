@@ -22,6 +22,11 @@ import json, re, sys, argparse
 from datetime import datetime
 from pathlib import Path
 
+# Windows cp950 terminal 無法輸出 emoji，強制改為 UTF-8（v1.1）
+if sys.stdout.encoding and sys.stdout.encoding.lower() in ('cp950', 'big5', 'gbk', 'cp936'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+
 BLOG_DIR      = Path(__file__).parent / "blog"
 TEMPLATE      = BLOG_DIR / "_article_template.html"
 ARTICLES_JSON = BLOG_DIR / "articles.json"
