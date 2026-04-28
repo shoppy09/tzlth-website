@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-add_article.py  —  careerssl.com 直接發布腳本（v1.0）
-建立日期：2026-04-27
+add_article.py  —  careerssl.com 直接發布腳本（v1.1）
+建立日期：2026-04-27 | 排程發布支援：2026-04-28
+
 執行者：Claude（Tim 只需提供文字 + 日期 + 標籤）
 
 ⚠️ Claude 執行注意事項：
@@ -13,12 +14,18 @@ add_article.py  —  careerssl.com 直接發布腳本（v1.0）
   4. 執行完後刪除暫存 content file（blog/_temp_content.html）
   5. npx vercel --prod 後，執行 python batch_update_all_articles.py 補齊 UI（email 訂閱框等）
 
+排程發布模式（--schedule YYYY-MM-DD）：
+  - HTML 檔案立即生成（URL 存在但列表不顯示）
+  - articles.json 不更新（文章不出現在列表）
+  - 排程描述檔儲存至 blog/scheduled/SLUG.json
+  - GitHub Actions 每日 09:00 (台灣) 掃描並自動發布
+
 批量發布邏輯：
   - articles.json 為 newest-first；新文章 prepend 到最前
   - 每次呼叫同時更新「前一篇」的 article-nav-prev 連結（雙向更新）
   - 由舊到新順序確保 NEXT/PREV 連結正確建立
 """
-import json, re, sys, argparse
+import json, re, sys, argparse, os
 from datetime import datetime
 from pathlib import Path
 
@@ -30,6 +37,7 @@ if sys.stdout.encoding and sys.stdout.encoding.lower() in ('cp950', 'big5', 'gbk
 BLOG_DIR      = Path(__file__).parent / "blog"
 TEMPLATE      = BLOG_DIR / "_article_template.html"
 ARTICLES_JSON = BLOG_DIR / "articles.json"
+SCHEDULED_DIR = BLOG_DIR / "scheduled"
 
 
 def make_slug(title: str, date: str) -> str:
@@ -100,6 +108,13 @@ def main():
         '--content-file',
         required=True,
         help='HTML 內容檔案路徑（可用相對路徑，以本腳本所在目錄為基準）'
+    )
+    parser.add_argument(
+        '--schedule',
+        default=None,
+        metavar='YYYY-MM-DD',
+        help='排程發布日期。提供此參數時：HTML 立即生成但不加入 articles.json；'
+             '排程描述檔存入 blog/scheduled/，由 GitHub Actions 每日 09:00 自動發布。'
     )
     args = parser.parse_args()
 
@@ -180,11 +195,6 @@ def main():
     out.write_text(html, encoding='utf-8')
     print(f'✅ blog/{slug}.html 已建立')
 
-    # 雙向更新：前一篇文章的 PREV → 新文章
-    if prev_art:
-        update_prev_article(prev_art['slug'], slug, args.title)
-
-    # 更新 articles.json（新文章 prepend）
     new_entry = {
         'slug':    slug,
         'title':   args.title,
@@ -192,13 +202,37 @@ def main():
         'excerpt': excerpt,
         'tags':    tags
     }
-    articles.insert(0, new_entry)
-    ARTICLES_JSON.write_text(
-        json.dumps(articles, ensure_ascii=False, indent=2),
-        encoding='utf-8'
-    )
-    print(f'✅ articles.json 更新（共 {len(articles)} 篇）')
-    print(f'🔗 預期 URL：https://www.careerssl.com/blog/{slug}.html')
+
+    if args.schedule:
+        # ── 排程模式：存入 blog/scheduled/，不加 articles.json ──
+        try:
+            datetime.strptime(args.schedule, '%Y-%m-%d')
+        except ValueError:
+            print(f'❌ --schedule 日期格式錯誤：{args.schedule}（應為 YYYY-MM-DD）')
+            sys.exit(1)
+        SCHEDULED_DIR.mkdir(exist_ok=True)
+        sched_entry = dict(new_entry)
+        sched_entry['date'] = args.schedule   # 使用排程日期（非 --date）
+        sched_file = SCHEDULED_DIR / f'{slug}.json'
+        sched_file.write_text(
+            json.dumps(sched_entry, ensure_ascii=False, indent=2),
+            encoding='utf-8'
+        )
+        print(f'⏰ 排程模式：articles.json 不更新')
+        print(f'   排程描述檔已存至：{sched_file}')
+        print(f'   發布日期：{args.schedule}（台灣時間 09:00 由 GH Actions 自動發布）')
+        print(f'🔗 預期 URL（發布後）：https://www.careerssl.com/blog/{slug}.html')
+    else:
+        # ── 立即發布模式：雙向更新 + 加入 articles.json ──
+        if prev_art:
+            update_prev_article(prev_art['slug'], slug, args.title)
+        articles.insert(0, new_entry)
+        ARTICLES_JSON.write_text(
+            json.dumps(articles, ensure_ascii=False, indent=2),
+            encoding='utf-8'
+        )
+        print(f'✅ articles.json 更新（共 {len(articles)} 篇）')
+        print(f'🔗 預期 URL：https://www.careerssl.com/blog/{slug}.html')
 
 
 if __name__ == '__main__':

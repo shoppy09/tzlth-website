@@ -1,0 +1,70 @@
+name: 排程文章自動發布
+
+# 每日台灣時間 09:00（UTC 01:00）自動執行
+# 亦可手動觸發（測試用：輸入自訂日期）
+on:
+  schedule:
+    - cron: '0 1 * * *'   # UTC 01:00 = 台灣 09:00
+  workflow_dispatch:
+    inputs:
+      publish_date:
+        description: '指定發布日期（格式：YYYY-MM-DD，留空 = 今日）'
+        required: false
+        default: ''
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # 需要 git push 權限
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 執行排程發布腳本
+        id: publish
+        run: |
+          # 若手動觸發且有指定日期，傳入 --date 參數
+          DATE_ARG=""
+          if [ -n "${{ github.event.inputs.publish_date }}" ]; then
+            DATE_ARG="--date ${{ github.event.inputs.publish_date }}"
+          fi
+
+          # publish_scheduled.py：
+          #   exit 0 = 無到期文章（無需後續步驟）
+          #   exit 1 = 有文章已發布（需要 commit + deploy）
+          python publish_scheduled.py $DATE_ARG
+          echo "publish_exit=$?" >> $GITHUB_OUTPUT
+        continue-on-error: true   # exit 1 不中斷 workflow
+
+      - name: 提交並推送變更
+        if: steps.publish.outcome == 'failure'   # exit 1 觸發（有變更）
+        run: |
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add blog/articles.json blog/scheduled/
+          DATE=$(TZ='Asia/Taipei' date +%Y-%m-%d)
+          git commit -m "auto: 排程發布 ${DATE} 文章"
+          git push origin main
+          echo "✅ articles.json 已更新並推送"
+
+      - name: 部署至 Vercel Production
+        if: steps.publish.outcome == 'failure'   # 有變更才 deploy
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: team_jvyEytBJDdk7Elyy1rTnY2Se
+          VERCEL_PROJECT_ID: prj_GRd0eIwWkynrfTTA1fHEkUrVuJxO
+        run: |
+          npm install -g vercel
+          vercel deploy --prod --token $VERCEL_TOKEN
+          echo "✅ Vercel 部署完成"
+
+      - name: 無到期文章（靜默退出）
+        if: steps.publish.outcome == 'success'   # exit 0
+        run: echo "今日無排程文章到期，無需部署。"
