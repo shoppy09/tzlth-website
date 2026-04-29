@@ -1171,7 +1171,14 @@
 
   /* ── CONTENT HUB (Footer pre-section) ─────────── */
   #content-hub { padding: 64px 24px; background: var(--cream); border-top: 1px solid var(--border); }
-  .content-hub-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .content-hub-inner { max-width: 980px; margin: 0 auto; text-align: center; }
+  .content-hub-row-label {
+    font-size: .78rem; font-weight: 600;
+    color: var(--charcoal-soft); letter-spacing: .12em;
+    text-transform: uppercase;
+    margin: 28px 0 14px; text-align: left;
+  }
+  .content-hub-row-label:first-of-type { margin-top: 8px; }
   .content-hub-title {
     font-size: 1.1rem;
     font-weight: 600;
@@ -1181,7 +1188,7 @@
   }
   .content-hub-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
   .content-hub-card {
@@ -1210,6 +1217,7 @@
     margin-bottom: 6px;
   }
   .content-hub-desc { font-size: .88rem; color: var(--muted); line-height: 1.65; }
+  @media (max-width: 900px) { .content-hub-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 600px) { .content-hub-grid { grid-template-columns: 1fr; } }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -1756,6 +1764,7 @@
           先跟我聊清楚你的狀況。我會告訴你你卡在哪、最適合從哪裡開始。
           若當場決定升級為完整諮詢，費用全額折抵。
         </p>
+        <p style="margin-top:12px;font-size:.88rem;"><a href="/services/quick-clarity.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">看完整說明 →</a></p>
       </div>
       <div class="service-entry-right">
         <div class="service-entry-price-block">
@@ -1787,6 +1796,7 @@
         <p class="service-note">首次實付 NT$1,300</p>
         <p class="service-social">已陪伴 <strong>130+</strong> 位客戶</p>
         <a href="https://booking.careerssl.com/?source=service-s4" target="_blank" class="btn-service" rel="noopener noreferrer">預約這個方案</a>
+        <p style="text-align:center;margin-top:10px;font-size:.85rem;"><a href="/services/career-consultation.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">看完整說明 →</a></p>
       </div>
 
       <div class="service-card featured reveal">
@@ -1807,6 +1817,7 @@
         <p class="service-note service-note--light">含職能轉譯矩陣 + 完整書面策略報告</p>
         <p class="service-social">已陪伴 <strong>110+</strong> 位客戶</p>
         <a href="https://booking.careerssl.com/?source=service-s6" target="_blank" class="btn-service" rel="noopener noreferrer">預約這個方案</a>
+        <p style="text-align:center;margin-top:10px;font-size:.85rem;"><a href="/services/career-transition.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">看完整說明 →</a></p>
       </div>
 
       <div class="service-card reveal">
@@ -1826,6 +1837,7 @@
         <p class="service-note">相當於每次 NT$1,500</p>
         <p class="service-social">已陪伴 <strong>40+</strong> 位客戶</p>
         <a href="https://booking.careerssl.com/?source=service-s0" target="_blank" class="btn-service" rel="noopener noreferrer">了解陪跑方案</a>
+        <p style="text-align:center;margin-top:10px;font-size:.85rem;"><a href="/services/coaching.html" style="color:var(--accent);text-decoration:underline;text-underline-offset:3px;">看完整說明 →</a></p>
       </div>
 
     </div>
@@ -2469,16 +2481,42 @@
 <section id="content-hub">
   <div class="content-hub-inner">
     <p class="content-hub-title reveal">想先了解更多？</p>
+
+    <p class="content-hub-row-label reveal">社群追蹤</p>
     <div class="content-hub-grid">
       <a href="https://www.instagram.com/cda_pu_positive_thinking/" target="_blank" rel="noopener noreferrer" class="content-hub-card reveal">
         <p class="content-hub-platform">Instagram</p>
         <p class="content-hub-name">@cda_pu_positive_thinking</p>
         <p class="content-hub-desc">每週分享履歷、面試、轉職的實用觀點。</p>
       </a>
+      <a href="https://www.threads.net/@shoppy0920" target="_blank" rel="noopener noreferrer" class="content-hub-card reveal">
+        <p class="content-hub-platform">Threads</p>
+        <p class="content-hub-name">@shoppy0920</p>
+        <p class="content-hub-desc">5,200+ 工作者追蹤，高頻短文與職涯觀察。</p>
+      </a>
       <a href="https://vocus.cc/salon/careerssl" target="_blank" rel="noopener noreferrer" class="content-hub-card reveal">
         <p class="content-hub-platform">方格子</p>
         <p class="content-hub-name">職涯停看聽</p>
         <p class="content-hub-desc">深度文章，看清楚職涯卡關的真正原因。</p>
+      </a>
+    </div>
+
+    <p class="content-hub-row-label reveal">免費資源</p>
+    <div class="content-hub-grid">
+      <a href="/blog/" class="content-hub-card reveal">
+        <p class="content-hub-platform">部落格</p>
+        <p class="content-hub-name">職涯文章專區</p>
+        <p class="content-hub-desc">450+ 篇職涯文章，從履歷到面試到轉職決策。</p>
+      </a>
+      <a href="#lead" class="content-hub-card reveal">
+        <p class="content-hub-platform">電子書</p>
+        <p class="content-hub-name">免費下載專區</p>
+        <p class="content-hub-desc">面試框架、履歷句型、跨產業轉職指南，多本免費索取。</p>
+      </a>
+      <a href="https://diagnose.careerssl.com/?source=content-hub" target="_blank" rel="noopener noreferrer" class="content-hub-card reveal">
+        <p class="content-hub-platform">AI 工具</p>
+        <p class="content-hub-name">AI 履歷診斷</p>
+        <p class="content-hub-desc">免費上傳履歷，60 秒內取得結構化弱點分析。</p>
       </a>
     </div>
   </div>
