@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-add_article.py  —  careerssl.com 直接發布腳本（v1.1）
-建立日期：2026-04-27 | 排程發布支援：2026-04-28
+add_article.py  —  careerssl.com 直接發布腳本（v1.2）
+建立日期：2026-04-27 | 排程發布支援：2026-04-28 | 排程 NEXT 修正：2026-04-29
 
 執行者：Claude（Tim 只需提供文字 + 日期 + 標籤）
 
@@ -166,10 +166,33 @@ def main():
 
     # PREV/NEXT 邏輯（articles.json 為 newest-first）
     articles   = json.loads(ARTICLES_JSON.read_text(encoding='utf-8'))
-    prev_art   = articles[0] if articles else None   # 目前最新篇 → 新文章的 NEXT 方向
-    next_url   = f"/blog/{prev_art['slug']}.html" if prev_art else ''
-    next_title = (prev_art['title'][:20] + '…') if prev_art and len(prev_art['title']) > 20 \
-                 else (prev_art['title'] if prev_art else '')
+    latest_pub = articles[0] if articles else None   # 已發布最新篇
+
+    # 排程模式：同時掃描 blog/scheduled/ 找比當前排程日期更舊的文章作為 NEXT
+    # （避免排程文章彼此的 NEXT 全部錯誤地指向最後一篇已發布文章）
+    if args.schedule:
+        older_sched = []
+        if SCHEDULED_DIR.exists():
+            for jf in SCHEDULED_DIR.glob('*.json'):
+                if jf.stem == slug:
+                    continue  # 跳過自己（本次新建的 JSON 尚未存入，但做防禦）
+                try:
+                    entry = json.loads(jf.read_text(encoding='utf-8'))
+                    if entry.get('date', '') < args.schedule:
+                        older_sched.append(entry)
+                except Exception:
+                    pass
+        if older_sched:
+            older_sched.sort(key=lambda x: x.get('date', ''), reverse=True)
+            next_art = older_sched[0]   # 排程中最近的舊篇
+        else:
+            next_art = latest_pub       # 退回已發布最新篇
+    else:
+        next_art = latest_pub
+
+    next_url   = f"/blog/{next_art['slug']}.html" if next_art else ''
+    next_title = (next_art['title'][:20] + '…') if next_art and len(next_art['title']) > 20 \
+                 else (next_art['title'] if next_art else '')
     prev_url   = '#'     # 新發布時尚無更新篇，標記 # 等待下次發布時更新
     prev_title = ''
 
@@ -218,14 +241,18 @@ def main():
             json.dumps(sched_entry, ensure_ascii=False, indent=2),
             encoding='utf-8'
         )
+        # 雙向更新：更新 next_art 的 article-nav-prev 指向當前新文章
+        # （排程文章同樣需要更新，否則發布後導覽鏈斷裂）
+        if next_art:
+            update_prev_article(next_art['slug'], slug, args.title)
         print(f'⏰ 排程模式：articles.json 不更新')
         print(f'   排程描述檔已存至：{sched_file}')
         print(f'   發布日期：{args.schedule}（台灣時間 09:00 由 GH Actions 自動發布）')
         print(f'🔗 預期 URL（發布後）：https://www.careerssl.com/blog/{slug}.html')
     else:
         # ── 立即發布模式：雙向更新 + 加入 articles.json ──
-        if prev_art:
-            update_prev_article(prev_art['slug'], slug, args.title)
+        if next_art:
+            update_prev_article(next_art['slug'], slug, args.title)
         articles.insert(0, new_entry)
         ARTICLES_JSON.write_text(
             json.dumps(articles, ensure_ascii=False, indent=2),

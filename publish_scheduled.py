@@ -13,6 +13,7 @@
 
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
@@ -22,6 +23,29 @@ TW_TZ = timezone(timedelta(hours=8))
 
 SCHEDULED_DIR = Path(__file__).parent / "blog" / "scheduled"
 ARTICLES_JSON = Path(__file__).parent / "blog" / "articles.json"
+
+
+def update_prev_article_html(blog_dir: Path, prev_slug: str, new_slug: str, new_title: str):
+    """
+    更新 prev_slug.html 的 article-nav-prev 連結，指向 new_slug。
+    只更新 href="#" 的佔位連結（已設定的連結不覆蓋）。
+    """
+    prev_path = blog_dir / f'{prev_slug}.html'
+    if not prev_path.exists():
+        print(f'  ⚠️  找不到文章 HTML：{prev_slug}.html，略過 PREV 更新')
+        return
+    html = prev_path.read_text(encoding='utf-8')
+    short_title = new_title[:20] + ('…' if len(new_title) > 20 else '')
+    new_html = re.sub(
+        r'(<a href=")[#](" class="article-nav-prev"[^>]*>)[^<]*(</a>)',
+        rf'\g<1>/blog/{new_slug}.html\g<2>{short_title}\g<3>',
+        html, count=1
+    )
+    if new_html != html:
+        prev_path.write_text(new_html, encoding='utf-8')
+        print(f'  ✅ 已更新 {prev_slug}.html PREV 連結 → {new_slug}')
+    else:
+        print(f'  ⚠️  {prev_slug}.html PREV 連結未匹配（可能已更新），略過')
 
 
 def get_publish_date(args):
@@ -63,7 +87,10 @@ def main():
     with open(ARTICLES_JSON, encoding="utf-8") as f:
         articles = json.load(f)
 
+    blog_dir = ARTICLES_JSON.parent
+
     # 將到期文章加入 articles.json 開頭（最新優先）
+    published_slugs = []
     for json_file, entry in to_publish:
         slug = entry.get("slug", "")
         # 避免重複加入
@@ -71,6 +98,7 @@ def main():
             print(f"  ⚠️  {slug} 已存在於 articles.json，跳過。")
         else:
             articles.insert(0, entry)
+            published_slugs.append((slug, entry.get("title", "")))
             print(f"  📰 已加入 articles.json：{slug}")
 
         # 從 scheduled/ 移除
@@ -81,6 +109,14 @@ def main():
     with open(ARTICLES_JSON, "w", encoding="utf-8") as f:
         json.dump(articles, f, ensure_ascii=False, indent=2)
     print(f"[publish_scheduled] articles.json 更新完成，共 {len(articles)} 篇文章。")
+
+    # 雙向導覽更新：更新剛發布文章的「前一篇」PREV 連結
+    # （article-nav-prev 應指向剛發布的文章；若已設定則略過）
+    for slug, title in published_slugs:
+        idx = next((i for i, a in enumerate(articles) if a.get("slug") == slug), None)
+        if idx is not None and idx + 1 < len(articles):
+            older_slug = articles[idx + 1]["slug"]
+            update_prev_article_html(blog_dir, older_slug, slug, title)
 
     # exit code 1 = 有變更，GH Actions 後續步驟執行 deploy
     sys.exit(1)
