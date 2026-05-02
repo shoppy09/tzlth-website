@@ -34,6 +34,7 @@
 
 | 日期 | 修改內容 | 執行視窗 | 狀態 |
 |------|---------|---------|------|
+| 2026-05-02 | Bio rollout：index.html 4 處（L7 meta description / L10 og:description / L19 twitter:description / L1254 JSON-LD schema description）統一對齊 brand-profile.md 三數字「諮詢時數 300+ 小時／個案經歷 100+ 位／目前在職 20+ 年」+ 拿掉 og/twitter「桃園 CDA 認證職涯顧問」前置詞（cred-stats 視覺區 Wave 2 已對齊不動）| 總部視窗 | ✅ |
 | 2026-04-25 | 跨產業求職履歷重寫指南卡片新增 Kit Email 訂閱表單（form 9368216，uid 1525741d9d）| 總部視窗 | ✅ |
 | 2026-04-25 | 面試高分回答框架 Kit 表單 `.lead-card-note` 加入垃圾信件夾提醒文字（Task 2）| 總部視窗 | ✅ |
 | 2026-04-25 | 10 篇精選部落格新增「結論先行」開頭段落（GEO 優化，P1-C）— 目標 AI Overview / Featured Snippet 前 30% 引用 | 總部視窗 | ✅ |
