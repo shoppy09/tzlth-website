@@ -878,14 +878,14 @@
   .ai-tool-secondary { margin-top: 20px; }
   .ai-tool-secondary-link {
     display: flex; align-items: center; justify-content: space-between; gap: 24px;
-    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.10);
+    background: var(--white); border: 1px solid var(--border);
     border-radius: 4px; padding: 20px 28px;
-    text-decoration: none; color: var(--cream);
-    transition: background .2s;
+    text-decoration: none; color: var(--charcoal);
+    transition: background .2s, border-color .2s;
   }
-  .ai-tool-secondary-link:hover { background: rgba(255,255,255,.08); }
+  .ai-tool-secondary-link:hover { background: rgba(196,98,45,.04); border-color: var(--accent); }
   .ai-tool-secondary-link h3 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; margin-bottom: 4px; }
-  .ai-tool-secondary-link p { font-size: 13px; font-weight: 300; color: rgba(245,240,232,.6); margin: 0; }
+  .ai-tool-secondary-link p { font-size: 13px; font-weight: 300; color: var(--charcoal-soft); margin: 0; }
   .ai-tool-secondary-arrow { font-size: 18px; color: var(--accent); flex-shrink: 0; transition: transform .2s; }
   .ai-tool-secondary-link:hover .ai-tool-secondary-arrow { transform: translateX(4px); }
 
