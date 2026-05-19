@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/booking", "destination": "https://tzlth-booking.vercel.app/booking" },
+    { "source": "/booking/", "destination": "https://tzlth-booking.vercel.app/booking" },
     { "source": "/booking/:path*", "destination": "https://tzlth-booking.vercel.app/booking/:path*" }
   ],
   "redirects": [
