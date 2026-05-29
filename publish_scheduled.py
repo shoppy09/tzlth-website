@@ -71,7 +71,8 @@ def main():
             with open(json_file, encoding="utf-8") as f:
                 entry = json.load(f)
             publish_date = entry.get("date", "")
-            if publish_date == today_str:
+            # 使用 <= 而非 ==：確保 cron 延遲或漏觸發時，過期文章仍能在下次執行時補發
+            if publish_date <= today_str:
                 to_publish.append((json_file, entry))
                 print(f"  ✅ 找到到期文章：{json_file.name}（日期：{publish_date}）")
             else:
