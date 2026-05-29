@@ -7,7 +7,7 @@
   var searchQuery = '';
 
   // Load articles data
-  fetch('./articles.json')
+  fetch('/blog/articles.json')
     .then(function(r) { return r.json(); })
     .then(function(data) {
       allArticles = data;
