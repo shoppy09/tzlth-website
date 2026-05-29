@@ -38,6 +38,7 @@
 | 2026-05-29 | GEO Fix-2：index.html FAQPage JSON-LD 新增 3 個 Target Query（「找職涯顧問值得嗎 台灣」/「去職涯諮詢要準備什麼問題」/「履歷 ATS vs 內容問題」），FAQ 13→16 問；Python 驗證 VALID ✅ | 總部視窗 | ✅ |
 | 2026-05-29 | GEO Fix-3：blog/pillar-interview-star-salary-guide.html tldr-box 後加入 `<p class="article-summary">` 直接回答段落（STAR-D 框架定義 + 薪資談判核心邏輯，AI 引用優化）| 總部視窗 | ✅ |
 | 2026-05-02 | Bio rollout：index.html 4 處（L7 meta description / L10 og:description / L19 twitter:description / L1254 JSON-LD schema description）統一對齊 brand-profile.md 三數字「諮詢時數 300+ 小時／個案經歷 100+ 位／目前在職 20+ 年」+ 拿掉 og/twitter「桃園 CDA 認證職涯顧問」前置詞（cred-stats 視覺區 Wave 2 已對齊不動）| 總部視窗 | ✅ |
+| 2026-05-30 | GEO 落地 #2：發布回答型文章《諮詢前你可以準備的 5 個問題，讓一小時不浪費在暖場》（slug: 2026-05-30-5-questions-before-career-consultation；聚落B；FAQPage 5Q + Article JSON-LD + article-summary ✅；H2=5；雙向內鏈：2026-05-29-is-career-consulting-worth-it ✅；HTTP 200 ✅；GEO Q1 ✅ ≥3/5 ~21/30）| 總部視窗 | ✅ |
 | 2026-05-29 | GEO 落地：發布回答型文章《找職涯顧問值得嗎？諮詢前你必須回答的 3 個問題》（slug: 2026-05-29-is-career-consulting-worth-it；聚落 B；FAQPage 5Q + Article JSON-LD + article-summary ✅；H2=5；雙向內鏈：2026-05-23 延伸閱讀 ✅；HTTP 200 ✅）| 總部視窗 | ✅ |
 | 2026-04-25 | 跨產業求職履歷重寫指南卡片新增 Kit Email 訂閱表單（form 9368216，uid 1525741d9d）| 總部視窗 | ✅ |
 | 2026-04-25 | 面試高分回答框架 Kit 表單 `.lead-card-note` 加入垃圾信件夾提醒文字（Task 2）| 總部視窗 | ✅ |
