@@ -4,7 +4,7 @@ name: 排程文章自動發布
 # 亦可手動觸發（測試用：輸入自訂日期）
 on:
   schedule:
-    - cron: '0 1 * * *'   # UTC 01:00 = 台灣 09:00
+    - cron: '0 19 * * *'  # UTC 19:00 = 台灣 03:00（實際執行約台灣 06:00-08:00，避開 GH Actions 高峰延遲）
   workflow_dispatch:
     inputs:
       publish_date:
