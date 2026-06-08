@@ -1,13 +1,127 @@
 {
   "rewrites": [
-    { "source": "/booking", "destination": "https://tzlth-booking.vercel.app/booking" },
-    { "source": "/booking/", "destination": "https://tzlth-booking.vercel.app/booking" },
-    { "source": "/booking/:path*", "destination": "https://tzlth-booking.vercel.app/booking/:path*" }
+    {
+      "source": "/booking",
+      "destination": "https://tzlth-booking.vercel.app/booking"
+    },
+    {
+      "source": "/booking/",
+      "destination": "https://tzlth-booking.vercel.app/booking"
+    },
+    {
+      "source": "/booking/:path*",
+      "destination": "https://tzlth-booking.vercel.app/booking/:path*"
+    }
   ],
   "redirects": [
     {
+      "source": "/blog/69b7ae1bfd897800012532c9.html",
+      "destination": "/blog/2026-03-17-low-turnover-rate-career-trap.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/694aa7aafd89780001d22920.html",
+      "destination": "/blog/2025-12-25-boss-weekend-messages-work-boundaries.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/69e07ed0fd89780001a7a531.html",
+      "destination": "/blog/2026-04-18-gen-z-work-values-no-promotion.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/66d40036fd89780001292ef0.html",
+      "destination": "/blog/2024-09-02-overcome-laziness-life-achievement.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/6941576afd897800010148be.html",
+      "destination": "/blog/2025-12-18-salary-negotiation-hr-secrets.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/69c372ccfd897800012896e8.html",
+      "destination": "/blog/2026-03-27-bad-manager-talent-waste.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/671de505fd89780001be1da2.html",
+      "destination": "/blog/2024-10-30-good-job-phrase-termination-warning.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/69aa6a1dfd89780001730014.html",
+      "destination": "/blog/2026-03-07-verbal-promise-get-in-writing.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/693233dafd89780001ee058d.html",
+      "destination": "/blog/2025-12-06-resignation-counter-offer-stay-or-leave.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/6966f70ffd89780001516701.html",
+      "destination": "/blog/2026-01-18-people-pleaser-manager-team-failure.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/69240d11fd8978000188c5da.html",
+      "destination": "/blog/2025-11-25-interview-rejection-hidden-hiring-factors.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/696234d5fd897800018bac5d.html",
+      "destination": "/blog/2026-01-14-salary-negotiation-3-techniques.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/696070defd897800011f527b.html",
+      "destination": "/blog/2026-01-11-quiet-worker-workplace-visibility.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/69382243fd89780001712321.html",
+      "destination": "/blog/2025-12-11-new-job-different-from-interview-probation.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/69893278fd897800011abd50.html",
+      "destination": "/blog/2026-02-11-salary-negotiation-who-speaks-first.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/6987e7befd89780001be493e.html",
+      "destination": "/blog/2026-02-08-nice-person-bad-manager-hurts-team.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/696c7621fd897800017e62d2.html",
+      "destination": "/blog/2026-01-20-incompetent-manager-pua-signs.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/66f2a984fd89780001db7ede.html",
+      "destination": "/blog/2024-09-26-manage-your-boss-communication.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/69eb669cfd89780001936a12.html",
+      "destination": "/blog/2026-04-26-workplace-network-over-boss-dependency.html",
+      "permanent": true
+    },
+    {
+      "source": "/blog/696c84f0fd89780001828486.html",
+      "destination": "/blog/2026-01-20-bad-manager-3-characteristics.html",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "tzlth-website.vercel.app" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "tzlth-website.vercel.app"
+        }
+      ],
       "destination": "https://www.careerssl.com/$1",
       "permanent": true
     }
@@ -16,31 +130,61 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-XSS-Protection", "value": "1; mode=block" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'sha256-PkpOFUF3bsy+2iG+weTJHo6TxJq6LzQV4FcZV3Ge8xY=' https://www.googletagmanager.com https://www.google-analytics.com https://f.convertkit.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.google-analytics.com https://booking.careerssl.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://booking.careerssl.com https://app.kit.com; frame-ancestors 'none';" },
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'sha256-PkpOFUF3bsy+2iG+weTJHo6TxJq6LzQV4FcZV3Ge8xY=' https://www.googletagmanager.com https://www.google-analytics.com https://f.convertkit.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.google-analytics.com https://booking.careerssl.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://booking.careerssl.com https://app.kit.com; frame-ancestors 'none';"
+        },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        }
       ]
     },
     {
       "source": "/booking/:path*",
       "headers": [
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.google-analytics.com https://booking.careerssl.com; connect-src 'self' https://booking.careerssl.com https://www.google-analytics.com https://www.googletagmanager.com https://app.kit.com; frame-ancestors 'none';" }
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://www.google-analytics.com https://booking.careerssl.com; connect-src 'self' https://booking.careerssl.com https://www.google-analytics.com https://www.googletagmanager.com https://app.kit.com; frame-ancestors 'none';"
+        }
       ]
     },
     {
       "source": "/sitemap.xml",
       "headers": [
-        { "key": "Content-Type", "value": "application/xml; charset=utf-8" }
+        {
+          "key": "Content-Type",
+          "value": "application/xml; charset=utf-8"
+        }
       ]
     },
     {
       "source": "/robots.txt",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain; charset=utf-8" }
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
       ]
     }
   ]
