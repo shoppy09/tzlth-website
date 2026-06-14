@@ -34,6 +34,7 @@
 
 | 日期 | 修改內容 | 執行視窗 | 狀態 |
 |------|---------|---------|------|
+| 2026-06-14 | GSC canonical 修復：vercel.json 新增 Link header `<https://www.careerssl.com/booking>; rel="canonical"` for `/booking` 和 `/booking/`（Issue B：19 頁 /booking?source=* 無 canonical）；Issue A（1 頁 hex-ID 308 redirect）Phase 2.9 已建無新增代碼；GSC 兩問題驗證已開始 2026/6/14 ✅；commit efb5064；curl 驗證 ✅ | 總部視窗 | ✅ |
 | 2026-06-08 | Phase 2.9：migrate_phase29.py 執行 — 20 個 SEO slug HTML + vercel.json 20條301 + articles.json 20筆 + sitemap.xml 20條 + 甲案 509 HTML（77檔 147處）；Vercel dpl_2hy6eKQ9UadXv7qBp5JHjdnShfCi READY ✅；301 驗證 3/3 ✅ | 總部視窗 | ✅ |
 | 2026-05-29 | GEO Fix-1：blog/2026-05-28-workplace-people-pleaser-boundaries.html JSON-LD Article schema description 欄位多行字串修復（原：lines 56-60 含裸換行符 → SyntaxError position 483；修：單行合併）→ Python json.loads() 驗證 VALID ✅ | 總部視窗 | ✅ |
 | 2026-05-29 | GEO Fix-2：index.html FAQPage JSON-LD 新增 3 個 Target Query（「找職涯顧問值得嗎 台灣」/「去職涯諮詢要準備什麼問題」/「履歷 ATS vs 內容問題」），FAQ 13→16 問；Python 驗證 VALID ✅ | 總部視窗 | ✅ |
