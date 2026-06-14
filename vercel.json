@@ -170,6 +170,24 @@
       ]
     },
     {
+      "source": "/booking",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.careerssl.com/booking>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
+      "source": "/booking/",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "<https://www.careerssl.com/booking>; rel=\"canonical\""
+        }
+      ]
+    },
+    {
       "source": "/sitemap.xml",
       "headers": [
         {
