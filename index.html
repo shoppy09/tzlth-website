@@ -375,7 +375,14 @@
   .case-tag {
     font-size: 10px; font-weight: 500; letter-spacing: .12em;
     text-transform: uppercase; color: var(--accent);
-    margin-bottom: 20px; display: block;
+    margin-bottom: 20px; display: block; padding-right: 98px;
+  }
+  .case-ptype {
+    position: absolute; top: 40px; right: 34px; z-index: 3;
+    font-size: 9px; font-weight: 600; letter-spacing: .04em;
+    color: var(--accent); background: var(--cream);
+    padding: 4px 11px; border-radius: 100px;
+    border: 1px solid var(--border); white-space: nowrap;
   }
   .case-title {
     font-family: 'Playfair Display', serif;
@@ -1745,6 +1752,7 @@
 
       <div class="case-card reveal">
         <span class="case-tag">職場轉型・法律 → 企業法務</span>
+        <span class="case-ptype">石沉型</span>
         <h3 class="case-title">投了多間沒回音的資深律師</h3>
         <p class="case-before">真正的問題：</p>
         <p class="case-body">資深資歷，履歷寫的全是法院語言——勝訴紀錄、書狀數量。但企業法務聽不懂。問題不是能力，是語言。用 RBS 模型把「寫書狀」翻譯成「控管賠償風險、節省外部律師費」後，面試邀約來了。</p>
@@ -1754,6 +1762,7 @@
 
       <div class="case-card reveal">
         <span class="case-tag">履歷重寫・學術 → 科技業</span>
+        <span class="case-ptype">石沉型</span>
         <h3 class="case-title">理工碩士，寫了「學習歷程」四個字</h3>
         <p class="case-before">真正的問題：</p>
         <p class="case-body">碩士學歷加上業界證照——條件很好，卻用學生思維寫履歷。「參與實驗」vs「設計量測程序降低製程變異」，是完全不同的人。用 STAR 重構後，直接有競爭力。</p>
@@ -1763,6 +1772,7 @@
 
       <div class="case-card reveal">
         <span class="case-tag">職涯策略・醫療相關 → 科技業務</span>
+        <span class="case-ptype">未定向型</span>
         <h3 class="case-title">醫療相關背景，以為只能走專業路線</h3>
         <p class="case-before">真正的問題：</p>
         <p class="case-body">「評估→診斷→處方」這套邏輯，跟 B2B 顧問銷售的「需求診斷→選項比較→風險說明」幾乎一樣。他只是不知道自己的技能可以這樣翻譯。用財務逆推理解「賣時間」vs「賣價值」的天花板差距後，找到全新方向。</p>
@@ -1772,6 +1782,7 @@
 
       <div class="case-card reveal">
         <span class="case-tag">敘事重構・空白期處理</span>
+        <span class="case-ptype">未定向型</span>
         <h3 class="case-title">海外短期經驗回國，被說「積極度不足」</h3>
         <p class="case-before">真正的問題：</p>
         <p class="case-body">空窗不是問題，是他自己還沒搞清楚為什麼要回來。面試官感受到的心虛，是真實的。先釐清求職動機、重新定錨，才重構空白期敘事為「跨文化適應力提升與策略性充電」。</p>
@@ -1781,6 +1792,7 @@
 
       <div class="case-card reveal">
         <span class="case-tag">職涯轉型・跨產業敘事</span>
+        <span class="case-ptype">未譯型</span>
         <h3 class="case-title">前段職涯轉換，被說「不夠連貫」</h3>
         <p class="case-before">真正的問題：</p>
         <p class="case-body">紀律執行力＋情緒安撫經驗，其實是目標產業客服的核心能力組合——只是沒有框架把它們連接起來說。早期轉換從「說不清楚的包袱」，變成「主動評估後的策略性轉換」。</p>
@@ -1790,6 +1802,7 @@
 
       <div class="case-card reveal">
         <span class="case-tag">心態障礙・完美主義癱瘓</span>
+        <span class="case-ptype">內耗型</span>
         <h3 class="case-title">資深專業人士，問題根本不是履歷</h3>
         <p class="case-before">真正的問題：</p>
         <p class="case-body">怕出錯→拖延→陷入循環的工作模式，在求職上又要走一遍。不先命名這個模式，任何技術建議都落不了地。先處理「完美主義癱瘓」，讓她理解這是防禦機制、不是懶，才讓行動真正開始。</p>
@@ -1799,6 +1812,7 @@
 
       <div class="case-card reveal">
         <span class="case-tag">職涯策略・迷航期決策</span>
+        <span class="case-ptype">未定向型</span>
         <h3 class="case-title">31 歲行銷人，面對四個選項全部說不完整</h3>
         <p class="case-before">真正的問題：</p>
         <p class="case-body">維持現況、行銷公司、科技業務員、接案創業——四個方向都有理由，也都有疑慮。關鍵不在哪個選項「對」，而在決策是從「逃離現況」出發還是「解決真正問題」出發。用車道比喻做四維度盤點後，才發現核心問題不是「選哪條路」，而是「先看清楚自己在哪裡」。</p>
@@ -1808,6 +1822,7 @@
 
       <div class="case-card reveal">
         <span class="case-tag">職涯起步・跨背景入行</span>
+        <span class="case-ptype">未啟動型</span>
         <h3 class="case-title">軍校退伍生問的不是「要不要進銀行」，是「有沒有入口」</h3>
         <p class="case-before">真正的問題：</p>
         <p class="case-body">兼職餐飲、就讀財金夜間部、無金融證照——問題不是方向模糊，而是看不到入口。一旦拆解「銀行客服不需要金融證照，它需要的是溝通能力和紀律性」，核心焦慮立刻消解。軍職 SOP 執行力和壓力耐受度，正是銀行合規作業的天然優勢，只是需要換一套語言才能讓人看見。</p>
@@ -1817,6 +1832,7 @@
 
       <div class="case-card reveal">
         <span class="case-tag">晉升困局・管理語言缺失</span>
+        <span class="case-ptype">未譯型</span>
         <h3 class="case-title">業績破百萬，升不了經理</h3>
         <p class="case-before">真正的問題：</p>
         <p class="case-body">低 CPL、單專案業績破百萬——執行力沒問題。但主管評估的是「她能不能用管理者的視角看問題」，而這在現有工作紀錄裡找不到。解法不是等機會，是主動製造可見度：下一個專案主動撰寫風險評估表，讓主管在你開口前就看見「她在用決策者的眼光工作」。</p>
