@@ -271,6 +271,12 @@ def main():
         )
         print(f'✅ articles.json 更新（共 {len(articles)} 篇）')
         print(f'🔗 預期 URL：https://www.careerssl.com/blog/{slug}.html')
+        # 更新 sitemap.xml（union 補入本篇；2026-06-21 修補發布流程漏 sitemap）
+        try:
+            import generate_sitemap
+            generate_sitemap.main()
+        except Exception as e:
+            print(f'⚠️ sitemap 更新失敗（不阻斷發布）：{e}')
 
 
 if __name__ == '__main__':

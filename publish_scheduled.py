@@ -128,6 +128,13 @@ def main():
         json.dump(articles, f, ensure_ascii=False, indent=2)
     print(f"[publish_scheduled] articles.json 更新完成，共 {len(articles)} 篇文章。")
 
+    # 更新 sitemap.xml（union 補入本批到期文章；2026-06-21 修補發布流程漏 sitemap）
+    try:
+        import generate_sitemap
+        generate_sitemap.main()
+    except Exception as e:
+        print(f"⚠️ sitemap 更新失敗（不阻斷發布）：{e}")
+
     # 雙向導覽更新：更新剛發布文章的「前一篇」PREV 連結
     # （article-nav-prev 應指向剛發布的文章；若已設定則略過）
     for slug, title in published_slugs:
