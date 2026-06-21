@@ -48,6 +48,21 @@ def update_prev_article_html(blog_dir: Path, prev_slug: str, new_slug: str, new_
         print(f'  ⚠️  {prev_slug}.html PREV 連結未匹配（可能已更新），略過')
 
 
+def strip_noindex(blog_dir, slug):
+    """
+    發布時移除排程文章 HTML 的 noindex meta（add_article.py --schedule 在未發布前注入，
+    避免提前曝光被索引；發布上線後移除使其可被正常索引）。
+    """
+    p = blog_dir / f'{slug}.html'
+    if not p.exists():
+        return
+    html = p.read_text(encoding='utf-8')
+    new_html = re.sub(r'\n?<meta name="robots" content="noindex">', '', html, count=1)
+    if new_html != html:
+        p.write_text(new_html, encoding='utf-8')
+        print(f'  🔓 已移除 {slug}.html noindex（發布上線可索引）')
+
+
 def get_publish_date(args):
     """取得發布日期：預設為台灣今日，可透過 --date 參數覆蓋（測試用）"""
     if "--date" in args:
@@ -101,6 +116,8 @@ def main():
             articles.insert(0, entry)
             published_slugs.append((slug, entry.get("title", "")))
             print(f"  📰 已加入 articles.json：{slug}")
+            # 發布上線：移除未發布期間的 noindex，使文章可被正常索引
+            strip_noindex(blog_dir, slug)
 
         # 從 scheduled/ 移除
         json_file.unlink()

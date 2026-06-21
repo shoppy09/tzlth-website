@@ -241,6 +241,17 @@ def main():
             json.dumps(sched_entry, ensure_ascii=False, indent=2),
             encoding='utf-8'
         )
+        # 排程文章加 noindex（未發布前避免被搜尋引擎索引；publish_scheduled.py 發布時自動 strip）
+        # 註：用 noindex 不用移檔/隱藏——cron 曾延遲（IMP-162），noindex 讓文章延遲期間仍可達只是不索引
+        sched_html = out.read_text(encoding='utf-8')
+        if 'name="robots"' not in sched_html:
+            sched_html = sched_html.replace(
+                '<meta name="viewport" content="width=device-width, initial-scale=1.0">',
+                '<meta name="viewport" content="width=device-width, initial-scale=1.0">\n<meta name="robots" content="noindex">',
+                1
+            )
+            out.write_text(sched_html, encoding='utf-8')
+            print(f'   🔒 已加 noindex（發布時 publish_scheduled.py 自動移除）')
         # 雙向更新：更新 next_art 的 article-nav-prev 指向當前新文章
         # （排程文章同樣需要更新，否則發布後導覽鏈斷裂）
         if next_art:

@@ -1,0 +1,21 @@
+# 內部檔案不部署到 Vercel（2026-06-21 安全盤點建立）
+# 避免 CLAUDE.md / 維護腳本 / 日誌 在 www.careerssl.com 被公開存取
+# 註：cron（GitHub Actions）用 actions/checkout 取完整 repo，不受此影響
+
+# 內部文檔
+CLAUDE.md
+README.md
+
+# 維護腳本（靜態站 runtime 不需；由本機/CI 執行）
+*.py
+
+# 匯入日誌
+*.log
+import_*.txt
+
+# 排程文章 JSON 佇列（未發布 metadata）
+blog/scheduled/
+
+# 專案說明/記憶（若存在）
+project_website_features.md
+project_website_status.md
